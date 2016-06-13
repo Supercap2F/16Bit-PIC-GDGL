@@ -24,7 +24,6 @@ Command:
   build/default/production/LCD-2.0.o \
   build/default/production/OLED.o \
   build/default/production/GDGL.o \
-  build/default/production/DefaultFont.o \
   --local-stack \
   --defsym=__MPLAB_BUILD=1 \
   -Tp24EP512GP202.gld.00 \
@@ -63,11 +62,11 @@ section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200                0xd6           0x141  (321)
 .const                       0x2d6               0x1dc           0x2ca  (714)
-.text                        0x4b2               0xa5a           0xf87  (3975)
-.init.delay32                0xf0c                0x1c            0x2a  (42)
-.dinit                       0xf28                 0x8             0xc  (12)
+.text                        0x4b2               0xaa0           0xff0  (4080)
+.init.delay32                0xf52                0x1c            0x2a  (42)
+.dinit                       0xf6e                 0x8             0xc  (12)
 
-                     Total program memory used (bytes):         0x13c8  (5064) <1%
+                     Total program memory used (bytes):         0x1431  (5169) <1%
 
 
 Data Memory  [Origin = 0x1000, Length = 0xc000]
@@ -105,10 +104,10 @@ External Symbols in Program Memory (by address):
 
                   0x000200                  __resetPRI
                   0x00022c                  __psv_init
-                  0x000238                  __data_init
                   0x000238                  __data_init_extended
+                  0x000238                  __data_init
                   0x0002d2                  __DefaultInterrupt
-                  0x0002d6                  _OLED_ASCII
+                  0x0002d6                  _Dfont
                   0x0004b2                  _PlotLine
                   0x000552                  _PlotVLine
                   0x000590                  _PlotHLine
@@ -121,20 +120,21 @@ External Symbols in Program Memory (by address):
                   0x00097e                  _PlotRoundFilledSide
                   0x000a6a                  _PlotFiledRoundedRect
                   0x000b00                  _PlotFilledCircle
-                  0x000b40                  _OLED_PlotPoint
-                  0x000c50                  _OLED_SetAddr
-                  0x000cac                  _OLED_Write
-                  0x000d70                  _OLED_ClearDisplay
-                  0x000dba                  _main
-                  0x000f0c                  ___delay32
+                  0x000b40                  _WriteChar
+                  0x000bc8                  _OLED_PlotPoint
+                  0x000cd8                  _OLED_SetAddr
+                  0x000d34                  _OLED_Write
+                  0x000df8                  _OLED_ClearDisplay
+                  0x000e42                  _main
+                  0x000f52                  ___delay32
 
 External Symbols in Program Memory (by name):
 
-                  0x0002d6                  _OLED_ASCII
-                  0x000d70                  _OLED_ClearDisplay
-                  0x000b40                  _OLED_PlotPoint
-                  0x000c50                  _OLED_SetAddr
-                  0x000cac                  _OLED_Write
+                  0x0002d6                  _Dfont
+                  0x000df8                  _OLED_ClearDisplay
+                  0x000bc8                  _OLED_PlotPoint
+                  0x000cd8                  _OLED_SetAddr
+                  0x000d34                  _OLED_Write
                   0x000762                  _PlotCircle
                   0x00064c                  _PlotCircleQuadrant
                   0x000a6a                  _PlotFiledRoundedRect
@@ -147,13 +147,14 @@ External Symbols in Program Memory (by name):
                   0x000856                  _PlotRoundedRect
                   0x000614                  _PlotTriangle
                   0x000552                  _PlotVLine
+                  0x000b40                  _WriteChar
                   0x0002d2                  __DefaultInterrupt
-                  0x000f0c                  ___delay32
+                  0x000f52                  ___delay32
                   0x000238                  __data_init
                   0x000238                  __data_init_extended
                   0x00022c                  __psv_init
                   0x000200                  __resetPRI
-                  0x000dba                  _main
+                  0x000e42                  _main
 
 Memory Configuration
 
@@ -179,7 +180,6 @@ Linker script and memory map
 LOAD build/default/production/LCD-2.0.o
 LOAD build/default/production/OLED.o
 LOAD build/default/production/GDGL.o
-LOAD build/default/production/DefaultFont.o
                     0x0001                  __MPLAB_BUILD = 0x1
 LOAD c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib/PIC24E\libp24EP512GP202-elf.a
 LOAD c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libfx-elf.a
@@ -260,33 +260,30 @@ __FUID3
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x1476
+.debug_info       0x000000       0x1455
  *(.debug_info)
  .debug_info      0x000000        0x93c build/default/production/LCD-2.0.o
  .debug_info      0x00093c        0x320 build/default/production/OLED.o
- .debug_info      0x000c5c        0x718 build/default/production/GDGL.o
- .debug_info      0x001374        0x102 build/default/production/DefaultFont.o
+ .debug_info      0x000c5c        0x7f9 build/default/production/GDGL.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000        0x29e
+.debug_abbrev     0x000000        0x2c1
  *(.debug_abbrev)
  .debug_abbrev    0x000000         0xc9 build/default/production/LCD-2.0.o
  .debug_abbrev    0x0000c9         0xfb build/default/production/OLED.o
- .debug_abbrev    0x0001c4         0x91 build/default/production/GDGL.o
- .debug_abbrev    0x000255         0x49 build/default/production/DefaultFont.o
+ .debug_abbrev    0x0001c4         0xfd build/default/production/GDGL.o
 
-.debug_line       0x000000        0x9de
+.debug_line       0x000000        0x9e7
  *(.debug_line)
- .debug_line      0x000000        0x221 build/default/production/LCD-2.0.o
- .debug_line      0x000221        0x23c build/default/production/OLED.o
- .debug_line      0x00045d        0x54c build/default/production/GDGL.o
- .debug_line      0x0009a9         0x35 build/default/production/DefaultFont.o
+ .debug_line      0x000000        0x1e9 build/default/production/LCD-2.0.o
+ .debug_line      0x0001e9        0x23c build/default/production/OLED.o
+ .debug_line      0x000425        0x5c2 build/default/production/GDGL.o
 
-.debug_frame      0x000000        0x14c
+.debug_frame      0x000000        0x15c
  *(.debug_frame)
  .debug_frame     0x000000         0x24 build/default/production/LCD-2.0.o
  .debug_frame     0x000024         0x54 build/default/production/OLED.o
- .debug_frame     0x000078         0xd4 build/default/production/GDGL.o
+ .debug_frame     0x000078         0xe4 build/default/production/GDGL.o
 
 .debug_str        0x000000         0x66
  *(.debug_str)
@@ -301,16 +298,14 @@ __FUID3
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000        0x1be
+                  0x000000        0x1b5
  *(.debug_pubnames)
  .debug_pubnames
                   0x000000         0x1b build/default/production/LCD-2.0.o
  .debug_pubnames
                   0x00001b         0x8c build/default/production/OLED.o
  .debug_pubnames
-                  0x0000a7         0xf6 build/default/production/GDGL.o
- .debug_pubnames
-                  0x00019d         0x21 build/default/production/DefaultFont.o
+                  0x0000a7        0x10e build/default/production/GDGL.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -1351,7 +1346,7 @@ LOAD data_init
                   0x000124         0x12 build/default/production/GDGL.o
 
 __c30_signature
-                  0x000136         0x2a
+                  0x000136         0x24
  __c30_signature
                   0x000136          0x6 build/default/production/LCD-2.0.o
  __c30_signature
@@ -1359,13 +1354,11 @@ __c30_signature
  __c30_signature
                   0x000142          0x6 build/default/production/GDGL.o
  __c30_signature
-                  0x000148          0x6 build/default/production/DefaultFont.o
+                  0x000148          0x6 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a(crt0_extendedep.o)
  __c30_signature
-                  0x00014e          0x6 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a(crt0_extendedep.o)
+                  0x00014e          0x6 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a(data_init_extendedep.o)
  __c30_signature
-                  0x000154          0x6 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a(data_init_extendedep.o)
- __c30_signature
-                  0x00015a          0x6 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a(delay32ep.eo)
+                  0x000154          0x6 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a(delay32ep.eo)
 
 .nbss               0x1000        0x48e
  .nbss              0x1000        0x48e build/default/production/OLED.o
@@ -1392,11 +1385,11 @@ __c30_signature
                   0x0557f0          0x2 build/default/production/LCD-2.0.o
 
 .const              0x82d6        0x1dc load address 0x0002d6  
- .const             0x82d6        0x1dc build/default/production/DefaultFont.o
-                    0x82d6                  _OLED_ASCII
+ .const             0x82d6        0x1dc build/default/production/GDGL.o
+                    0x82d6                  _Dfont
 
-.text             0x0004b2        0xa5a
- .text            0x0004b2        0x68e build/default/production/GDGL.o
+.text             0x0004b2        0xaa0
+ .text            0x0004b2        0x716 build/default/production/GDGL.o
                   0x0004b2                  _PlotLine
                   0x000552                  _PlotVLine
                   0x000590                  _PlotHLine
@@ -1409,17 +1402,18 @@ __c30_signature
                   0x00097e                  _PlotRoundFilledSide
                   0x000a6a                  _PlotFiledRoundedRect
                   0x000b00                  _PlotFilledCircle
- .text            0x000b40        0x27a build/default/production/OLED.o
-                  0x000b40                  _OLED_PlotPoint
-                  0x000c50                  _OLED_SetAddr
-                  0x000cac                  _OLED_Write
-                  0x000d70                  _OLED_ClearDisplay
- .text            0x000dba        0x152 build/default/production/LCD-2.0.o
-                  0x000dba                  _main
+                  0x000b40                  _WriteChar
+ .text            0x000bc8        0x27a build/default/production/OLED.o
+                  0x000bc8                  _OLED_PlotPoint
+                  0x000cd8                  _OLED_SetAddr
+                  0x000d34                  _OLED_Write
+                  0x000df8                  _OLED_ClearDisplay
+ .text            0x000e42        0x110 build/default/production/LCD-2.0.o
+                  0x000e42                  _main
 
-.init.delay32     0x000f0c         0x1c
- .init.delay32    0x000f0c         0x1c c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a(delay32ep.eo)
-                  0x000f0c                  ___delay32
+.init.delay32     0x000f52         0x1c
+ .init.delay32    0x000f52         0x1c c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a(delay32ep.eo)
+                  0x000f52                  ___delay32
 
-.dinit            0x000f28          0x8
- .dinit           0x000f28          0x8 data_init
+.dinit            0x000f6e          0x8
+ .dinit           0x000f6e          0x8 data_init

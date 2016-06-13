@@ -8,7 +8,7 @@
 #include "OLED.h"
 #include <stdlib.h>
 #include <xc.h>
-#include "DefaultFont.c"
+#include "DefaultFont.h"
 
 /************************************************
  * Global variables                             *
@@ -251,6 +251,28 @@ void PlotFilledCircle(int x0, int y0, int r, unsigned char color){
     PlotVLine(x0, y0-r, 2*r+1, color);
     PlotRoundFilledSide(x0, y0, r, 0, 0, color); // plot right side
     PlotRoundFilledSide(x0, y0, r, 0, 1, color); // plot left side 
+}
+/*******************************************************************************
+ * Only text drawing functions past this point                                 *
+ *******************************************************************************/
+/************************************************
+ * WriteChar Function - function plots a single *
+ * character.                                   *
+ ************************************************/
+int WriteChar(int x0, int y0, unsigned char letter, int size, unsigned char color){
+    int x,y;
+    unsigned char mask;
+    if(letter<0x20||letter>0x7E) // if function is sent a ASCII character it can't print
+        return(GDGL_OUTOFRANGE); // return Out of Range error 
+    letter-=0x20;                // subtract unused ASCII characters so variable  
+                                 // 'letter' can be used for an arrays value
+    
+    for(x=x0;x<x0+5;x++) {
+        for(mask=1,y=y0;y<y0+8;y++,mask=mask<<1){
+            OLED_PlotPoint(x,y,((Dfont[letter][(x-x0)] & mask) ? color:0));
+        }
+    }
+    return(GDGL_SUCCESS);
 }
 
 

@@ -111,14 +111,13 @@ int main()
         OLED_Write(0x00,OLED_DAT);
     OLED_SetAddr(0,0);
     
-    for(x=0;x<127;x=x+2)
-        OLED_PlotPoint(x,0,ON);
-    for(x=0;x<63;x=x+2)
-        OLED_PlotPoint(0,x,ON);
+   // for(x=0;x<127;x=x+2)
+   //     OLED_PlotPoint(x,0,ON);
+   // for(x=0;x<63;x=x+2)
+   //     OLED_PlotPoint(0,x,ON);
    
-    PlotFiledRoundedRect(10,10,50,20,4,ON);
-    PlotRoundedRect(10,35,50,20,4,ON);
-    PlotFilledCircle(80,40,10,ON);
+    OLED_PlotPoint(63,1,ON);
+    WriteChar(63,3,'L',1,ON);
     
     while(1) { 
                // wait for switch DIS_OFF to be pressed 

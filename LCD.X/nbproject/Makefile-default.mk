@@ -45,17 +45,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=LCD-2.0.c OLED.c GDGL.c DefaultFont.c
+SOURCEFILES_QUOTED_IF_SPACED=LCD-2.0.c OLED.c GDGL.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/LCD-2.0.o ${OBJECTDIR}/OLED.o ${OBJECTDIR}/GDGL.o ${OBJECTDIR}/DefaultFont.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/LCD-2.0.o.d ${OBJECTDIR}/OLED.o.d ${OBJECTDIR}/GDGL.o.d ${OBJECTDIR}/DefaultFont.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/LCD-2.0.o ${OBJECTDIR}/OLED.o ${OBJECTDIR}/GDGL.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/LCD-2.0.o.d ${OBJECTDIR}/OLED.o.d ${OBJECTDIR}/GDGL.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/LCD-2.0.o ${OBJECTDIR}/OLED.o ${OBJECTDIR}/GDGL.o ${OBJECTDIR}/DefaultFont.o
+OBJECTFILES=${OBJECTDIR}/LCD-2.0.o ${OBJECTDIR}/OLED.o ${OBJECTDIR}/GDGL.o
 
 # Source Files
-SOURCEFILES=LCD-2.0.c OLED.c GDGL.c DefaultFont.c
+SOURCEFILES=LCD-2.0.c OLED.c GDGL.c
 
 
 CFLAGS=
@@ -103,13 +103,6 @@ ${OBJECTDIR}/GDGL.o: GDGL.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE)  GDGL.c  -o ${OBJECTDIR}/GDGL.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/GDGL.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf   -O0 -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/GDGL.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/DefaultFont.o: DefaultFont.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/DefaultFont.o.d 
-	@${RM} ${OBJECTDIR}/DefaultFont.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  DefaultFont.c  -o ${OBJECTDIR}/DefaultFont.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/DefaultFont.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf   -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/DefaultFont.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
 else
 ${OBJECTDIR}/LCD-2.0.o: LCD-2.0.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -131,13 +124,6 @@ ${OBJECTDIR}/GDGL.o: GDGL.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/GDGL.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  GDGL.c  -o ${OBJECTDIR}/GDGL.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/GDGL.o.d"      -mno-eds-warn  -g -omf=elf   -O0 -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/GDGL.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/DefaultFont.o: DefaultFont.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/DefaultFont.o.d 
-	@${RM} ${OBJECTDIR}/DefaultFont.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  DefaultFont.c  -o ${OBJECTDIR}/DefaultFont.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/DefaultFont.o.d"      -mno-eds-warn  -g -omf=elf   -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/DefaultFont.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 endif
 

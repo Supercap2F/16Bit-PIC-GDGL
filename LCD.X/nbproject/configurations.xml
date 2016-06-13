@@ -6,6 +6,7 @@
                    projectFiles="true">
       <itemPath>OLED.h</itemPath>
       <itemPath>GDGL.h</itemPath>
+      <itemPath>DefaultFont.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -17,7 +18,6 @@
       <itemPath>LCD-2.0.c</itemPath>
       <itemPath>OLED.c</itemPath>
       <itemPath>GDGL.c</itemPath>
-      <itemPath>DefaultFont.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
