@@ -116,7 +116,11 @@ int main()
     for(x=0;x<63;x=x+2)
         OLED_PlotPoint(0,x,ON);
    
-    WriteString(2,2,"Hello!",2,ON,OFF);
+    WriteString(2,2,"Hello!",ON,OFF);
+    SetTextSize(2);
+    WriteString(2,20,"Hello!",ON,OFF);
+    SetTextSize(3);
+    WriteString(2,40,"Hello!",ON,OFF);
     
     
     while(1) { 

@@ -13,7 +13,7 @@
 /************************************************
  * Global variables                             *
  ************************************************/
-
+int tsize=1; // global text size variable
 
 /************************************************
  * PlotLine function - This bit of code is      *
@@ -259,7 +259,7 @@ void PlotFilledCircle(int x0, int y0, int r, unsigned char color){
  * WriteChar Function - function plots a single *
  * character.                                   *
  ************************************************/
-int WriteChar(int x0, int y0, unsigned char letter, int size, unsigned char color, unsigned char backcolor){
+int WriteChar(int x0, int y0, unsigned char letter, unsigned char color, unsigned char backcolor){
     int x,y,ySize,xSize;
     unsigned char mask;
     
@@ -268,13 +268,13 @@ int WriteChar(int x0, int y0, unsigned char letter, int size, unsigned char colo
     letter-=0x20;                // subtract unused ASCII characters so variable  
                                  // 'letter' can be used for an arrays value
     
-    for(x=x0;x<(5*size)+x0;x+=size){            // Please don't try to understand this - just accept it. 
-        mask=1;                                 // reset mask variable 
-        for(y=y0;y<(8*size)+y0;y=y+size){       //
-            for(xSize=0;xSize<size;xSize++)     // 
-                for(ySize=0;ySize<size;ySize++) // 
-                    OLED_PlotPoint(x+xSize,y+ySize,((Dfont[letter][((x-x0)/size)] & mask) ? color:backcolor));
-            mask<<=1;                           // shift the mask left 1 bit
+    for(x=x0;x<(5*tsize)+x0;x+=tsize){           // Please don't try to understand this - just accept it. 
+        mask=1;                                  // reset mask variable 
+        for(y=y0;y<(8*tsize)+y0;y=y+tsize){      //
+            for(xSize=0;xSize<tsize;xSize++)     // 
+                for(ySize=0;ySize<tsize;ySize++) // 
+                    OLED_PlotPoint(x+xSize,y+ySize,((Dfont[letter][((x-x0)/tsize)] & mask) ? color:backcolor));
+            mask<<=1;                            // shift the mask left 1 bit
         }
     }
     return(GDGL_SUCCESS);
@@ -282,22 +282,32 @@ int WriteChar(int x0, int y0, unsigned char letter, int size, unsigned char colo
 /************************************************
  * WriteChar Function - function plots a string *
  ************************************************/
-int WriteString(int x0, int y0, char *string, int size, unsigned char color, unsigned char backcolor){
+int WriteString(int x0, int y0, char *string, unsigned char color, unsigned char backcolor){
     int error_code=0;
     int y=0;
     while(*string)
     {
         y++;
-        error_code=WriteChar(x0, y0, *string, size, color, backcolor);
+        error_code=WriteChar(x0, y0, *string, color, backcolor);
         if(error_code!=GDGL_SUCCESS)           // if WriteChar returns an error 
             return(error_code);  // stop and return it to the user 
         
-        x0+=5*size;
-        PlotVLine(x0,y0,7*size,ON);
+        x0+=5*tsize;
+        PlotVLine(x0,y0,7*tsize,backcolor);
         string++;
         x0++;
     }
     return(GDGL_SUCCESS);
+}
+/************************************************
+ * SetTextSize Function - sets the current      *
+ * text size.                                   *
+ ************************************************/
+int SetTextSize(int Tx_size){
+    if(Tx_size==0)               // if size is zero
+        return(GDGL_OUTOFRANGE); // return error 
+    tsize=Tx_size;               // else set global size variable to Tx_size
+    return(GDGL_SUCCESS);        // return success 
 }
 
 /*********************************************************************************
