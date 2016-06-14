@@ -111,16 +111,13 @@ int main()
         OLED_Write(0x00,OLED_DAT);
     OLED_SetAddr(0,0);
     
-    for(x=0;x<127;x=x+2)
-        OLED_PlotPoint(x,0,ON);
-    for(x=0;x<63;x=x+2)
-        OLED_PlotPoint(0,x,ON);
+//    for(x=0;x<127;x=x+2)
+//        OLED_PlotPoint(x,0,ON);
+//    for(x=0;x<63;x=x+2)
+//        OLED_PlotPoint(0,x,ON);
    
-    WriteString(2,2,"Hello!",ON,OFF);
-    SetTextSize(2);
-    WriteString(2,20,"Hello!",ON,OFF);
-    SetTextSize(3);
-    WriteString(2,40,"Hello!",ON,OFF);
+    SetTextSize(4);
+    WriteString(2,2,"Yaba Yaba Yaba Yaba Yaba Yaba. Yaba Yaba Yaba Yaba Yaba Yaba. Yaba Yaba Yaba Yaba Yaba Yaba.",ON,OFF);
     
     
     while(1) { 

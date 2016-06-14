@@ -33,7 +33,7 @@ void PlotFilledCircle(int x0, int y0, int r, unsigned char color);
 int WriteChar(int x0, int y0, unsigned char letter, unsigned char color, unsigned char backcolor);
 int WriteString(int x0, int y0, char *string, unsigned char color, unsigned char backcolor);
 int SetTextSize(int Tx_size);
-
+void SetTextWrap(char Tx_wrap);
 #endif	/* INC_OLED_H */
 
 

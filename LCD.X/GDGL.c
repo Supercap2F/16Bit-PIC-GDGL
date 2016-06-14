@@ -13,7 +13,8 @@
 /************************************************
  * Global variables                             *
  ************************************************/
-int tsize=1; // global text size variable
+int tsize=1;  // text size variable
+char txwrap=1; // text wrap variable: 1=wrap 0=don't wrap
 
 /************************************************
  * PlotLine function - This bit of code is      *
@@ -284,20 +285,37 @@ int WriteChar(int x0, int y0, unsigned char letter, unsigned char color, unsigne
  ************************************************/
 int WriteString(int x0, int y0, char *string, unsigned char color, unsigned char backcolor){
     int error_code=0;
-    int y=0;
-    while(*string)
+    
+    while(*string) // will loop until NULL is reached (0x00)
     {
-        y++;
-        error_code=WriteChar(x0, y0, *string, color, backcolor);
-        if(error_code!=GDGL_SUCCESS)           // if WriteChar returns an error 
-            return(error_code);  // stop and return it to the user 
+        error_code=WriteChar(x0, y0, *string, color, backcolor); // write the current character to the screen
         
-        x0+=5*tsize;
-        PlotVLine(x0,y0,7*tsize,backcolor);
-        string++;
-        x0++;
+        if(error_code!=GDGL_SUCCESS) // if WriteChar returns an error 
+            return(error_code);      // stop and return it to the user 
+        
+        if(txwrap) {                         // if the user wants the text to wrap:
+            if(Scrn_W-(x0+5*tsize)<5*tsize){ // if there is not enough room to print the character on the same line
+                y0+=8*tsize;                 // drop the current line down one 
+                if(Scrn_H-y0<8*tsize)        // if there's not enough room to print the character on the next line
+                    return(GDGL_PRNTCUTOFF); // return error
+                x0=0;                        // reset x axis
+                string++;                    // increment the current character
+            }
+            else {                                  // else 
+                x0+=5*tsize;                        // do the regular text stuff
+                PlotVLine(x0,y0,7*tsize,backcolor); //
+                string++;                           //
+                x0++;                               //
+            }
+        }
+        else {                                 // else if the user does not want the text to wrap:
+            x0+=5*tsize;                       // increment the x axis to make a spot for the new character
+            PlotVLine(x0,y0,7*tsize,backcolor);// plot a blank line between characters
+            string++;                          // increment the current character
+            x0++;                              // increment x axis to make room for line just plotted
+        }
     }
-    return(GDGL_SUCCESS);
+    return(GDGL_SUCCESS); // return success code 
 }
 /************************************************
  * SetTextSize Function - sets the current      *
@@ -308,6 +326,16 @@ int SetTextSize(int Tx_size){
         return(GDGL_OUTOFRANGE); // return error 
     tsize=Tx_size;               // else set global size variable to Tx_size
     return(GDGL_SUCCESS);        // return success 
+}
+/************************************************
+ * SetTextWrap Function - sets the text to wrap *  
+ * or not.                                      *
+ ************************************************/
+void SetTextWrap(char Tx_wrap){
+    if(Tx_wrap)   // if Tx_wrap is 1
+        txwrap=1; // set the text to wrap
+    else          // else
+        txwrap=0; // set it to not wrap
 }
 
 /*********************************************************************************
