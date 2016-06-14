@@ -18,6 +18,8 @@
 #define ON 1
 #define OFF 0
 #define IVRT 2
+#define Scrn_W 127
+#define Scrn_H 63
 /************************************************
  * NOTE: the user will need to change the       *
  * following definition values upon application *

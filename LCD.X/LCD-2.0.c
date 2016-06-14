@@ -111,13 +111,13 @@ int main()
         OLED_Write(0x00,OLED_DAT);
     OLED_SetAddr(0,0);
     
-   // for(x=0;x<127;x=x+2)
-   //     OLED_PlotPoint(x,0,ON);
-   // for(x=0;x<63;x=x+2)
-   //     OLED_PlotPoint(0,x,ON);
+    for(x=0;x<127;x=x+2)
+        OLED_PlotPoint(x,0,ON);
+    for(x=0;x<63;x=x+2)
+        OLED_PlotPoint(0,x,ON);
    
-    OLED_PlotPoint(63,1,ON);
-    WriteChar(63,3,'L',1,ON);
+    WriteString(2,2,"Hello!",2,ON,OFF);
+    
     
     while(1) { 
                // wait for switch DIS_OFF to be pressed 

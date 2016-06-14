@@ -12,7 +12,7 @@
  ************************************************/
 #define GDGL_SUCCESS    10
 #define GDGL_OUTOFRANGE 11 // out of range error 
-
+#define GDGL_PRNTCUTOFF 12 
 /************************************************
  * function prototypes                          *
  ************************************************/
@@ -28,7 +28,8 @@ void PlotFilledRectangle(int x, int y, int w, int h, unsigned char color);
 void PlotRoundFilledSide(int x0, int y0, int r, int h, int RorL, unsigned char color);
 void PlotFiledRoundedRect(int x0, int y0, int w, int h, int r, unsigned char color);
 void PlotFilledCircle(int x0, int y0, int r, unsigned char color);
-int WriteChar(int x0, int y0, unsigned char letter, int size, unsigned char color);
+int WriteChar(int x0, int y0, unsigned char letter, int size, unsigned char color, unsigned char backcolor);
+int WriteString(int x0, int y0, char *string, int size, unsigned char color, unsigned char backcolor);
 
 #endif	/* INC_OLED_H */
 

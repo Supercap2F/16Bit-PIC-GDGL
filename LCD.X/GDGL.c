@@ -259,24 +259,47 @@ void PlotFilledCircle(int x0, int y0, int r, unsigned char color){
  * WriteChar Function - function plots a single *
  * character.                                   *
  ************************************************/
-int WriteChar(int x0, int y0, unsigned char letter, int size, unsigned char color){
-    int x,y;
+int WriteChar(int x0, int y0, unsigned char letter, int size, unsigned char color, unsigned char backcolor){
+    int x,y,ySize,xSize;
     unsigned char mask;
+    
     if(letter<0x20||letter>0x7E) // if function is sent a ASCII character it can't print
         return(GDGL_OUTOFRANGE); // return Out of Range error 
     letter-=0x20;                // subtract unused ASCII characters so variable  
                                  // 'letter' can be used for an arrays value
     
-    for(x=x0;x<x0+5;x++) {
-        for(mask=1,y=y0;y<y0+8;y++,mask=mask<<1){
-            OLED_PlotPoint(x,y,((Dfont[letter][(x-x0)] & mask) ? color:0));
+    for(x=x0;x<(5*size)+x0;x+=size){            // Please don't try to understand this - just accept it. 
+        mask=1;                                 // reset mask variable 
+        for(y=y0;y<(8*size)+y0;y=y+size){       //
+            for(xSize=0;xSize<size;xSize++)     // 
+                for(ySize=0;ySize<size;ySize++) // 
+                    OLED_PlotPoint(x+xSize,y+ySize,((Dfont[letter][((x-x0)/size)] & mask) ? color:backcolor));
+            mask<<=1;                           // shift the mask left 1 bit
         }
     }
     return(GDGL_SUCCESS);
 }
+/************************************************
+ * WriteChar Function - function plots a string *
+ ************************************************/
+int WriteString(int x0, int y0, char *string, int size, unsigned char color, unsigned char backcolor){
+    int error_code=0;
+    int y=0;
+    while(*string)
+    {
+        y++;
+        error_code=WriteChar(x0, y0, *string, size, color, backcolor);
+        if(error_code!=GDGL_SUCCESS)           // if WriteChar returns an error 
+            return(error_code);  // stop and return it to the user 
+        
+        x0+=5*size;
+        PlotVLine(x0,y0,7*size,ON);
+        string++;
+        x0++;
+    }
+    return(GDGL_SUCCESS);
+}
 
-
- 
 /*********************************************************************************
  * REASOURCES:                                                                   *
  * http://web.engr.oregonstate.edu/~sllu/bcircle.pdf - circle drawing algorithm  *
