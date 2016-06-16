@@ -116,8 +116,14 @@ int main()
 //    for(x=0;x<63;x=x+2)
 //        OLED_PlotPoint(0,x,ON);
    
+    
+    WriteString(0,0,"Yaba",ON,OFF);
+    SetTextSize(2);
+    WriteString(0,8,"Yaba",ON,OFF);
+    SetTextSize(3);
+    WriteString(0,24,"Yaba",ON,OFF);
     SetTextSize(4);
-    WriteString(2,2,"Yaba Yaba Yaba Yaba Yaba Yaba. Yaba Yaba Yaba Yaba Yaba Yaba. Yaba Yaba Yaba Yaba Yaba Yaba.",ON,OFF);
+    WriteString(0,48,"Yaba",ON,OFF);
     
     
     while(1) { 
