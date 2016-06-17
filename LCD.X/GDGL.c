@@ -4,10 +4,10 @@
 /************************************************
  * Included files                               *
  ************************************************/
-#include "GDGL.h"
-#include "OLED.h"
 #include <stdlib.h>
 #include <xc.h>
+#include "GDGL.h"
+#include "ILI9163.h"
 #include "DefaultFont.h"
 
 /************************************************
@@ -23,7 +23,7 @@ char txwrap=1; // text wrap variable: 1=wrap 0=don't wrap
  * his awesome project here:                    *
  * https://github.com/jorticus/zeitgeber-firmware                       
  ************************************************/
-int PlotLine(int x0, int y0, int x1, int y1,unsigned char color) {
+int PlotLine(int x0, int y0, int x1, int y1, unsigned char color) {
     int dx, dy;
 	int sx, sy, err;
 	int e2;
@@ -36,7 +36,7 @@ int PlotLine(int x0, int y0, int x1, int y1,unsigned char color) {
     err = dx - dy;
 
     while (1) {
-        OLED_PlotPoint(x0, y0, color);
+        PlotPoint(x0, y0, color);
 
         if ((x0 == x1) && (y0 == y1)) return(GDGL_OUTOFRANGE);
         e2 = 2 * err;
@@ -62,7 +62,7 @@ void PlotVLine(int x, int y, int length, unsigned char color) {
         y=y-length;      // swap y position
     }
     for(t=0;t<length;t++) 
-        OLED_PlotPoint(x,y+t,color);
+        PlotPoint(x,y+t,color);
 }
 /************************************************
  * PlotHLine Function - this function plots a   *
@@ -75,7 +75,7 @@ void PlotHLine(int x, int y, int length, unsigned char color) {
         x=x-length;      // swap y position
     }
     for(t=0;t<length;t++) 
-        OLED_PlotPoint(x+t,y,color);
+        PlotPoint(x+t,y,color);
 }
 /************************************************
  * PlotRectangle Function - this function plots *
@@ -116,20 +116,20 @@ void PlotCircleQuadrant(int x0, int y0,int r,int quad,unsigned char color) {
    while (x>=y) {
      switch(quad) {
            case 3:
-               OLED_PlotPoint(x0 + x, y0 + y,color); // 3
-               OLED_PlotPoint(x0 + y, y0 + x,color); // 3
+               PlotPoint(x0 + x, y0 + y,color); // 3
+               PlotPoint(x0 + y, y0 + x,color); // 3
                break;
            case 2:
-               OLED_PlotPoint(x0 - y, y0 + x,color); // 2
-               OLED_PlotPoint(x0 - x, y0 + y,color); // 2
+               PlotPoint(x0 - y, y0 + x,color); // 2
+               PlotPoint(x0 - x, y0 + y,color); // 2
                break;
            case 1:
-               OLED_PlotPoint(x0 - x, y0 - y,color); // 1
-               OLED_PlotPoint(x0 - y, y0 - x,color); // 1
+               PlotPoint(x0 - x, y0 - y,color); // 1
+               PlotPoint(x0 - y, y0 - x,color); // 1
                break;
            case 0:
-               OLED_PlotPoint(x0 + y, y0 - x,color); // 0
-               OLED_PlotPoint(x0 + x, y0 - y,color); // 0
+               PlotPoint(x0 + y, y0 - x,color); // 0
+               PlotPoint(x0 + x, y0 - y,color); // 0
                break;
        }
       y++;
@@ -154,14 +154,14 @@ void PlotCircle(int x0, int y0, int r, unsigned char color)  {
    int r_err=0;
    
    while (x>=y) {
-      OLED_PlotPoint(x0 + x, y0 + y,color); // 3 plot all quadrants (circle drawn with symmetry)
-      OLED_PlotPoint(x0 + y, y0 + x,color); // 3
-      OLED_PlotPoint(x0 - y, y0 + x,color); // 2
-      OLED_PlotPoint(x0 - x, y0 + y,color); // 2            
-      OLED_PlotPoint(x0 - x, y0 - y,color); // 1
-      OLED_PlotPoint(x0 - y, y0 - x,color); // 1
-      OLED_PlotPoint(x0 + y, y0 - x,color); // 0
-      OLED_PlotPoint(x0 + x, y0 - y,color); // 0
+      PlotPoint(x0 + x, y0 + y,color); // 3 plot all quadrants (circle drawn with symmetry)
+      PlotPoint(x0 + y, y0 + x,color); // 3
+      PlotPoint(x0 - y, y0 + x,color); // 2
+      PlotPoint(x0 - x, y0 + y,color); // 2            
+      PlotPoint(x0 - x, y0 - y,color); // 1
+      PlotPoint(x0 - y, y0 - x,color); // 1
+      PlotPoint(x0 + y, y0 - x,color); // 0
+      PlotPoint(x0 + x, y0 - y,color); // 0
                 
       y++;
       r_err+=del_y;
@@ -274,7 +274,7 @@ int WriteChar(int x0, int y0, unsigned char letter, unsigned char color, unsigne
         for(y=y0;y<(8*tsize)+y0;y=y+tsize){      //
             for(xSize=0;xSize<tsize;xSize++)     // 
                 for(ySize=0;ySize<tsize;ySize++) // 
-                    OLED_PlotPoint(x+xSize,y+ySize,((Dfont[letter][((x-x0)/tsize)] & mask) ? color:backcolor));
+                    PlotPoint(x+xSize,y+ySize,((Dfont[letter][((x-x0)/tsize)] & mask) ? color:backcolor));
             mask<<=1;                            // shift the mask left 1 bit
         }
     }

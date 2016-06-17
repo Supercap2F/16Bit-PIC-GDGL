@@ -37,7 +37,7 @@
  ************************************************/
 int OLED_SetAddr(int page, int column);
 void OLED_Write(unsigned int cmd, unsigned int DorC);
-int OLED_PlotPoint(int x, int y, unsigned char state);
+int PlotPoint(int x, int y, unsigned char state);
 void OLED_ClearDisplay(void);
 #endif	/* INC_OLED_H */
 

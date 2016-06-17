@@ -11,7 +11,7 @@
 
 #define FCY 31323000 // must define FCY before including libpic30.h
 #include <libpic30.h>
-#include "OLED.h"
+#include "ILI9163.h"
 #include "GDGL.h"
 
 /***********************************************

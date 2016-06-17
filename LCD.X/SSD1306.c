@@ -6,7 +6,7 @@
 /************************************************
  * Included files                               *
  ************************************************/
-#include "OLED.h"
+#include "SSD1306.h"
 #include <xc.h>
 
 /************************************************
@@ -19,7 +19,7 @@ unsigned int current_column=0;
 /************************************************
  * OLED_SetAddr function                        *
  ************************************************/
-int OLED_PlotPoint(int x, int y, unsigned char state) {
+int PlotPoint(int x, int y, unsigned char state) {
     if ((x < 0) || (x >= 128) || (y < 0) || (y >= 64)) // if sent a pixel not on the screen
         return(OLED_OUTOFRANGE);                       // return error 
     
