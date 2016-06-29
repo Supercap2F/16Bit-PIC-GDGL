@@ -14,24 +14,26 @@
 #define GDGL_OUTOFRANGE 11 // out of range error 
 #define GDGL_PRNTCUTOFF 12 
 
+#define Scrn_W 128
+#define Scrn_H 128
 
 /************************************************
  * function prototypes                          *
  ************************************************/
-int PlotLine(int x0, int y0, int x1, int y1, unsigned char color);
-void PlotCircle(int x0, int y0, int r, unsigned char color);
-void PlotVLine(int x, int y, int length, unsigned char color);
-void PlotHLine(int x, int y, int length, unsigned char color);
-void PlotRectangle(int x, int y, int w, int h, unsigned char color);
-void PlotTriangle(int xA, int yA, int xB, int yB, int xC, int yC, unsigned char color);
-void PlotCircleQuadrant(int CX, int CY,int R,int quad,unsigned char color);
-void PlotRoundedRect(int x, int y, int w, int h, int r, unsigned char color);
-void PlotFilledRectangle(int x, int y, int w, int h, unsigned char color);
-void PlotRoundFilledSide(int x0, int y0, int r, int h, int RorL, unsigned char color);
-void PlotFiledRoundedRect(int x0, int y0, int w, int h, int r, unsigned char color);
-void PlotFilledCircle(int x0, int y0, int r, unsigned char color);
-int WriteChar(int x0, int y0, unsigned char letter, unsigned char color, unsigned char backcolor);
-int WriteString(int x0, int y0, char *string, unsigned char color, unsigned char backcolor);
+int PlotLine(int x0, int y0, int x1, int y1, int color);
+void PlotCircle(int x0, int y0, int r, int color);
+void PlotVLine(int x, int y, int length, int color);
+void PlotHLine(int x, int y, int length, int color);
+void PlotRectangle(int x, int y, int w, int h, int color);
+void PlotTriangle(int xA, int yA, int xB, int yB, int xC, int yC, int color);
+void PlotCircleQuadrant(int CX, int CY,int R,int quad, int color);
+void PlotRoundedRect(int x, int y, int w, int h, int r, int color);
+void PlotFilledRectangle(int x, int y, int w, int h, int color);
+void PlotRoundFilledSide(int x0, int y0, int r, int h, int RorL, int color);
+void PlotFiledRoundedRect(int x0, int y0, int w, int h, int r, int color);
+void PlotFilledCircle(int x0, int y0, int r, int color);
+int WriteChar(int x0, int y0, unsigned char letter, int color, int backcolor);
+int WriteString(int x0, int y0, char *string, int color, int backcolor);
 int SetTextSize(int Tx_size);
 void SetTextWrap(char Tx_wrap);
 #endif	/* INC_OLED_H */

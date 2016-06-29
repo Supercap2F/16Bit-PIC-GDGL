@@ -7,8 +7,8 @@
 #include <stdlib.h>
 #include <xc.h>
 #include "GDGL.h"
-#include "ILI9163.h"
-#include "DefaultFont.h"
+#include "LCD-Drivers\ILI9163.h"
+#include "Fonts\DefaultFont.h"
 
 /************************************************
  * Global variables                             *
@@ -23,7 +23,7 @@ char txwrap=1; // text wrap variable: 1=wrap 0=don't wrap
  * his awesome project here:                    *
  * https://github.com/jorticus/zeitgeber-firmware                       
  ************************************************/
-int PlotLine(int x0, int y0, int x1, int y1, unsigned char color) {
+int PlotLine(int x0, int y0, int x1, int y1, int color) {
     int dx, dy;
 	int sx, sy, err;
 	int e2;
@@ -55,7 +55,7 @@ int PlotLine(int x0, int y0, int x1, int y1, unsigned char color) {
  * PlotVLine Function - this function plots a   *
  * optimized vertical line                      *
  ************************************************/
-void PlotVLine(int x, int y, int length, unsigned char color) {
+void PlotVLine(int x, int y, int length, int color) {
     int t;
     if(length<0){        // if length is negative 
         length=0-length; // swap length sign
@@ -68,7 +68,7 @@ void PlotVLine(int x, int y, int length, unsigned char color) {
  * PlotHLine Function - this function plots a   *
  * optimized horizontal line                    *
  ************************************************/
-void PlotHLine(int x, int y, int length, unsigned char color) {
+void PlotHLine(int x, int y, int length, int color) {
     int t;
     if(length<0){        // if length is negative 
         length=0-length; // swap length sign
@@ -81,7 +81,7 @@ void PlotHLine(int x, int y, int length, unsigned char color) {
  * PlotRectangle Function - this function plots *
  * optimized rectangle                          *
  ************************************************/
-void PlotRectangle(int x, int y, int w, int h, unsigned char color) {
+void PlotRectangle(int x, int y, int w, int h, int color) {
     PlotHLine(x,y,w,color);   // plot top line
     PlotHLine(x,y+h-1,w,color); // plot bottom line
     PlotVLine(x,y,h,color);   // plot left line
@@ -91,7 +91,7 @@ void PlotRectangle(int x, int y, int w, int h, unsigned char color) {
  * PlotTriangle Function - this function plots  *
  * triangle ABC                                 *
  ************************************************/
-void PlotTriangle(int xA, int yA, int xB, int yB, int xC, int yC, unsigned char color){
+void PlotTriangle(int xA, int yA, int xB, int yB, int xC, int yC, int color){
     PlotLine(xA,yA,xB,yB,color);
     PlotLine(xB,yB,xC,yC,color);
     PlotLine(xA,yA,xC,yC,color);
@@ -106,7 +106,7 @@ void PlotTriangle(int xA, int yA, int xB, int yB, int xC, int yC, unsigned char 
  *   2 | 3                                      *
  *     |                                        *
  ************************************************/
-void PlotCircleQuadrant(int x0, int y0,int r,int quad,unsigned char color) {
+void PlotCircleQuadrant(int x0, int y0,int r,int quad, int color) {
    int x=r; 
    int y=0;
    int del_x=1-2*r; 
@@ -146,7 +146,7 @@ void PlotCircleQuadrant(int x0, int y0,int r,int quad,unsigned char color) {
  * PlotCircle Function - based upon Bresenham's *
  * circle drawing algorithm.                     *
  ************************************************/
-void PlotCircle(int x0, int y0, int r, unsigned char color)  {
+void PlotCircle(int x0, int y0, int r, int color)  {
    int x=r; 
    int y=0;
    int del_x=1-2*r; 
@@ -177,7 +177,7 @@ void PlotCircle(int x0, int y0, int r, unsigned char color)  {
  * PlotRoundRect Function - Plots a rectangle   *
  * with rounded corners                         *
  ************************************************/
-void PlotRoundedRect(int x, int y, int w, int h, int r, unsigned char color){
+void PlotRoundedRect(int x, int y, int w, int h, int r, int color){
     PlotHLine(x+r,y,w-2*r,color);     // plot top line
     PlotHLine(x+r,y+h-1,w-2*r,color); // plot bottom line
     PlotVLine(x,y+r,h-2*r,color);     // plot left line
@@ -192,7 +192,7 @@ void PlotRoundedRect(int x, int y, int w, int h, int r, unsigned char color){
  * PlotFilledRectangle Function - Plots a       *
  * filled rectangle                             *
  ************************************************/
-void PlotFilledRectangle(int x, int y, int w, int h, unsigned char color) {
+void PlotFilledRectangle(int x, int y, int w, int h, int color) {
     int z;
     for(z=x;z<w+x;z++)
         PlotVLine(z,y,h,color);
@@ -202,7 +202,7 @@ void PlotFilledRectangle(int x, int y, int w, int h, unsigned char color) {
  * plots a rectangle side with rounded corners. *
  * 0 = right, 1 = left                          *  
  ************************************************/
-void PlotRoundFilledSide(int x0, int y0, int r, int h, int RorL, unsigned char color){
+void PlotRoundFilledSide(int x0, int y0, int r, int h, int RorL, int color){
     int x=r; 
     int y=0;
     int del_x=1-2*r; 
@@ -235,7 +235,7 @@ void PlotRoundFilledSide(int x0, int y0, int r, int h, int RorL, unsigned char c
  * PlotFilledRoundedRect Function - function    *
  * plots a rectangle with rounded corners.      *
  ************************************************/
-void PlotFiledRoundedRect(int x0, int y0, int w, int h, int r, unsigned char color) {
+void PlotFiledRoundedRect(int x0, int y0, int w, int h, int r, int color) {
     int z;
     for(z=y0;z<h+y0;z++)                  // plot center of the rounded rectangle 
         PlotHLine(x0+r,z,w-2*r,color);    //
@@ -248,7 +248,7 @@ void PlotFiledRoundedRect(int x0, int y0, int w, int h, int r, unsigned char col
  * PlotFilledRoundedRect Function - function    *
  * plots a rectangle with rounded corners.      *
  ************************************************/
-void PlotFilledCircle(int x0, int y0, int r, unsigned char color){
+void PlotFilledCircle(int x0, int y0, int r, int color){
     PlotVLine(x0, y0-r, 2*r+1, color);
     PlotRoundFilledSide(x0, y0, r, 0, 0, color); // plot right side
     PlotRoundFilledSide(x0, y0, r, 0, 1, color); // plot left side 
@@ -260,7 +260,7 @@ void PlotFilledCircle(int x0, int y0, int r, unsigned char color){
  * WriteChar Function - function plots a single *
  * character.                                   *
  ************************************************/
-int WriteChar(int x0, int y0, unsigned char letter, unsigned char color, unsigned char backcolor){
+int WriteChar(int x0, int y0, unsigned char letter, int color, int backcolor){
     int x,y,ySize,xSize;
     unsigned char mask;
     
@@ -283,7 +283,7 @@ int WriteChar(int x0, int y0, unsigned char letter, unsigned char color, unsigne
 /************************************************
  * WriteChar Function - function plots a string *
  ************************************************/
-int WriteString(int x0, int y0, char *string, unsigned char color, unsigned char backcolor){
+int WriteString(int x0, int y0, char *string, int color, int backcolor){
     int error_code=0;
     
     while(*string) // will loop until NULL is reached (0x00)
