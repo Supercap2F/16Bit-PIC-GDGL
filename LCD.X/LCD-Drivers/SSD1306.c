@@ -17,7 +17,7 @@ unsigned int current_page=0;
 unsigned int current_column=0;
 
 /************************************************
- * OLED_SetAddr function                        *
+ * OLED_PlotPoint function                      *
  ************************************************/
 int PlotPoint(int x, int y, unsigned char state) {
     if ((x < 0) || (x >= 128) || (y < 0) || (y >= 64)) // if sent a pixel not on the screen

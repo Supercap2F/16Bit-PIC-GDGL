@@ -45,17 +45,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=LCD-2.0.c GDGL.c SSD1306.c ILI9163.c
+SOURCEFILES_QUOTED_IF_SPACED=LCD-2.0.c GDGL.c LCD-Drivers/ILI9163.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/LCD-2.0.o ${OBJECTDIR}/GDGL.o ${OBJECTDIR}/SSD1306.o ${OBJECTDIR}/ILI9163.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/LCD-2.0.o.d ${OBJECTDIR}/GDGL.o.d ${OBJECTDIR}/SSD1306.o.d ${OBJECTDIR}/ILI9163.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/LCD-2.0.o ${OBJECTDIR}/GDGL.o ${OBJECTDIR}/LCD-Drivers/ILI9163.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/LCD-2.0.o.d ${OBJECTDIR}/GDGL.o.d ${OBJECTDIR}/LCD-Drivers/ILI9163.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/LCD-2.0.o ${OBJECTDIR}/GDGL.o ${OBJECTDIR}/SSD1306.o ${OBJECTDIR}/ILI9163.o
+OBJECTFILES=${OBJECTDIR}/LCD-2.0.o ${OBJECTDIR}/GDGL.o ${OBJECTDIR}/LCD-Drivers/ILI9163.o
 
 # Source Files
-SOURCEFILES=LCD-2.0.c GDGL.c SSD1306.c ILI9163.c
+SOURCEFILES=LCD-2.0.c GDGL.c LCD-Drivers/ILI9163.c
 
 
 CFLAGS=
@@ -96,19 +96,12 @@ ${OBJECTDIR}/GDGL.o: GDGL.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE)  GDGL.c  -o ${OBJECTDIR}/GDGL.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/GDGL.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf   -O0 -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/GDGL.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/SSD1306.o: SSD1306.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/SSD1306.o.d 
-	@${RM} ${OBJECTDIR}/SSD1306.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  SSD1306.c  -o ${OBJECTDIR}/SSD1306.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/SSD1306.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf   -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/SSD1306.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/ILI9163.o: ILI9163.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/ILI9163.o.d 
-	@${RM} ${OBJECTDIR}/ILI9163.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ILI9163.c  -o ${OBJECTDIR}/ILI9163.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/ILI9163.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf   -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/ILI9163.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+${OBJECTDIR}/LCD-Drivers/ILI9163.o: LCD-Drivers/ILI9163.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/LCD-Drivers" 
+	@${RM} ${OBJECTDIR}/LCD-Drivers/ILI9163.o.d 
+	@${RM} ${OBJECTDIR}/LCD-Drivers/ILI9163.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  LCD-Drivers/ILI9163.c  -o ${OBJECTDIR}/LCD-Drivers/ILI9163.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/LCD-Drivers/ILI9163.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf   -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/LCD-Drivers/ILI9163.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 else
 ${OBJECTDIR}/LCD-2.0.o: LCD-2.0.c  nbproject/Makefile-${CND_CONF}.mk
@@ -125,19 +118,12 @@ ${OBJECTDIR}/GDGL.o: GDGL.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE)  GDGL.c  -o ${OBJECTDIR}/GDGL.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/GDGL.o.d"      -mno-eds-warn  -g -omf=elf   -O0 -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/GDGL.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/SSD1306.o: SSD1306.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/SSD1306.o.d 
-	@${RM} ${OBJECTDIR}/SSD1306.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  SSD1306.c  -o ${OBJECTDIR}/SSD1306.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/SSD1306.o.d"      -mno-eds-warn  -g -omf=elf   -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/SSD1306.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/ILI9163.o: ILI9163.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/ILI9163.o.d 
-	@${RM} ${OBJECTDIR}/ILI9163.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ILI9163.c  -o ${OBJECTDIR}/ILI9163.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/ILI9163.o.d"      -mno-eds-warn  -g -omf=elf   -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/ILI9163.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+${OBJECTDIR}/LCD-Drivers/ILI9163.o: LCD-Drivers/ILI9163.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/LCD-Drivers" 
+	@${RM} ${OBJECTDIR}/LCD-Drivers/ILI9163.o.d 
+	@${RM} ${OBJECTDIR}/LCD-Drivers/ILI9163.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  LCD-Drivers/ILI9163.c  -o ${OBJECTDIR}/LCD-Drivers/ILI9163.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/LCD-Drivers/ILI9163.o.d"      -mno-eds-warn  -g -omf=elf   -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/LCD-Drivers/ILI9163.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 endif
 

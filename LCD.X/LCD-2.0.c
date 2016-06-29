@@ -11,15 +11,15 @@
 
 #define FCY 31323000 // must define FCY before including libpic30.h
 #include <libpic30.h>
-#include "ILI9163.h"
+#include "LCD-Drivers\ILI9163.h"
 #include "GDGL.h"
 
 /***********************************************
  * Definitions                                 *
  ***********************************************/
-// NOTE: the pins that the interface to the OLED are on, are defined in the OLED.h file 
-#define START   PORTBbits.RB1
-#define DIS_OFF PORTBbits.RB0
+// NOTE: the pins that the interface to the LCD are defined in the LCD driver file 
+#define SW1 PORTBbits.RB0
+#define SW2 PORTBbits.RB1
 
 /***********************************************
  * Device configuration                        *
@@ -45,9 +45,7 @@ int main()
     /***********************************************
      * variable definitions                        *
      ***********************************************/
-    int x;
-    
-
+    int x,y;
     /***********************************************
      * oscillator configuration                    *
      ***********************************************/
@@ -67,79 +65,45 @@ int main()
      ***********************************************/
     /***********************************************
      * I/O connections:                            *
-     * RB<15:8> -> D<7:0>      | RB7 -> TRAN       *
-     * RB6 -> GPIO1            | RB5 -> GPIO2      *
-     * RB1 -> START            | RB0 -> DIS_ON     * 
-     * RA4 -> #E               | RA3 -> #R/W       *
-     * RA2 -> #D/C             | RA1 -> #RES       *
-     * RA0 -> #CS                                  *
+     ***********************************************
+     *                   PORTB                     *
+     * RB<15:8> -> D<7:0>      | RB7 <- GPIO3      *
+     * RB6 <- GPIO1            | RB5 <- GPIO0      *
+     * RB4 -> RESET            | RB3 - PGD         *
+     * RB2 - PGC               | RB1 <- SW2        *
+     * RB0 <- SW1                                  *
+     ***********************************************
+     *                   PORTA                     *
+     * RA4 -> GPIO2            | RA3 -> WR         *
+     * RA2 -> RD               | RA1 -> RS         *
+     * RA0 -> CS               |                   *
      ***********************************************/
-    ANSELB=0x000C; // turn off all analog features on PORTB<15:8>, RB7, RB1, and RB0
-    TRISB=0x007F;  // make PORTB<15:8> and RB7 outputs - RB1 and RB0 inputs 
-    LATB=0x00;     // set all PORTB outputs low 
-    ANSELA=0x00;   // turn off the analog features on all PORTA pins
-    TRISA=0x00;    // make all PORTA pins outputs 
-    LATA=0x00;     // set all PORTA outputs low
-    RES=1;         // except for #RESET (RA3) which needs to be high
+    ANSELB=0b0000000000000000; // turn off all analog features on PORTB<15:8>, RB7, RB1, and RB0
+    TRISB =0b0000000011101111; // make PORTB<15:8> and RB4 outputs - RB1 and RB0 inputs and GPIO inputs
+    LATB  =0b0000000000000000; // set all PORTB outputs low 
     
-    /***********************************************
-     * main program                                *
-     ***********************************************/
-    while(1) {
-    while(1)               // wait for switch START to be pressed 
-        if(START!=1)       // if it's pressed
-        {                  //
-            __delay_ms(8); // delay 8mS to debounce 
-            if(START!=1)   // if it's still pressed
-                break;     // break from endless while loop 
-        }                  // but if it isn't, do loop again 
+    ANSELA=0b0000000000000000; // turn off the analog features on all PORTA pins
+    TRISA =0b0000000000000000; // make all PORTA pins outputs 
+    LATA  =0b0000000000000000; // set all PORTA outputs low
     
-    RES=0;           // set #RESET low (which resets the display)
-    __delay_us(4);   // wait for it to register 
-    RES=1;           // set #RESET back to it's original state
-    __delay_us(4);   // wait for it to register
-    TRAN=1;          // turn on VCC for the display
-    __delay_ms(101); // wait for it to become stable and then turn on the display
+    RD=1;
+    CS=0;    // select the chip
+    RESET=1; // active low reset
     
-    OLED_Write(0b10101111,OLED_CMD); // turn the display on 
-    OLED_Write(0b00100000,OLED_CMD); // set display to horizontal addressing mode
-    OLED_Write(0b00000000,OLED_CMD); //
+    __delay_ms(100);
     
-  
+    LCD_Setup();
+    LCD_ClearDisplay();
     
-    for(x=0;x<8192;x++)
-        OLED_Write(0x00,OLED_DAT);
-    OLED_SetAddr(0,0);
-    
-//    for(x=0;x<127;x=x+2)
-//        OLED_PlotPoint(x,0,ON);
-//    for(x=0;x<63;x=x+2)
-//        OLED_PlotPoint(0,x,ON);
-   
-    
-    WriteString(0,0,"Yaba",ON,OFF);
-    SetTextSize(2);
-    WriteString(0,8,"Yaba",ON,OFF);
-    SetTextSize(3);
-    WriteString(0,24,"Yaba",ON,OFF);
     SetTextSize(4);
-    WriteString(0,48,"Yaba",ON,OFF);
+    WriteString(11,50,"12:09",CYAN,BLACK);
     
-    
-    while(1) { 
-               // wait for switch DIS_OFF to be pressed 
-        if(DIS_OFF!=1)     // if it's pressed
-        {                  //
-            __delay_ms(8); // delay 8mS to debounce 
-            if(DIS_OFF!=1) // if it's still pressed
-                break;     // break from endless while loop 
-        }                  // but if it isn't, do loop again 
-    }
-    OLED_Write(0b10101110,OLED_CMD); // turn off the display 
-    TRAN=0;                          // turn off VCC
-    __delay_ms(100);                 // wait for Toff
-    //while(1);                        // wait for user to remove power     
-    }
+    //PlotHLine(0,53,128,YELLOW);
+    //PlotHLine(0,75,128,YELLOW);
+    //PlotVLine(25,0,128,YELLOW);
+    //PlotVLine(103,0,128,YELLOW);
+                
+    while(1);
 }
 
 
