@@ -40,8 +40,8 @@ int PlotPoint(int x, int y, int state) {
     LCD_SetAddr(x,y,x+1,y+1); 
     
     LCD_Write(0b00101100,CMD);   // write memory write start command 
-    LCD_Write((state>>8),DAT);   // write the first part of the color
-    LCD_Write((state&0xFF),DAT); // write the last part of the color
+    LCD_Write(((state>>8)&0x00FF),DAT);   // write the first part of the color
+    LCD_Write((state&0x00FF),DAT); // write the last part of the color
     
     return(SUCCESS);
 }
@@ -70,23 +70,23 @@ int LCD_SetAddr(unsigned char column, unsigned char page, unsigned char endcolum
  * LCD_Setup function                           *
  ************************************************/
 void LCD_Setup(void) {
-    LCD_Write(0x01,0);       // software reset 
+    LCD_Write(0x01,CMD);       // software reset 
     
-    LCD_Write(0b00010001,0); // sleep out
+    LCD_Write(0b00010001,CMD); // sleep out
     __delay_ms(6);
     
-    LCD_Write(0b00111010,0); // interface pixel format 
+    LCD_Write(0b00111010,CMD); // interface pixel format 
     LCD_Write(0x05,1); // 16 bits per pixel
     
-    LCD_Write(0b00010011,0); // normal mode on 
+    LCD_Write(0b00010011,CMD); // normal mode on 
     
     LCD_Write(0b00110110,CMD); // this sets the color to BRG but on my display it makes it RGB
     LCD_Write(0b00001000,DAT); 
     
-    //LCD_Write(0b00100110,0); // gamma curve
-    //LCD_Write(0x04,1);
+    LCD_Write(0b00100110,CMD); // gamma curve
+    LCD_Write(0x08,DAT);
     
-    LCD_Write(0b00101001,0); // turn on the display
+    LCD_Write(0b00101001,CMD); // turn on the display
     __delay_ms(10);
     
     //LCD_Write(0b00101100,0); // start command 

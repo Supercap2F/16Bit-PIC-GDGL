@@ -337,6 +337,16 @@ void SetTextWrap(char Tx_wrap){
     else          // else
         txwrap=0; // set it to not wrap
 }
+/************************************************
+ * PlotBitmap565 Function - plots a R5 G6 B5    *  
+ * bitmap.                                      *
+ ************************************************/
+void PlotBitmap565(int x0, int y0, int w, int h,const unsigned short *image){
+    int x,y;
+    for(y=0;y<h;y++)
+        for(x=0;x<w;x++)
+            PlotPoint(x+x0,y+y0,*(image+(x+y*w)));    
+}
 
 /*********************************************************************************
  * REASOURCES:                                                                   *

@@ -61,12 +61,12 @@ Program Memory  [Origin = 0x200, Length = 0x555ec]
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200                0xd6           0x141  (321)
-.const                       0x2d6               0x1e2           0x2d3  (723)
-.text                        0x4b8               0xb0c          0x1092  (4242)
-.init.delay32                0xfc4                0x1c            0x2a  (42)
-.dinit                       0xfe0                 0xc            0x12  (18)
+.const                       0x2d6              0x21dc          0x32ca  (13002)
+.text                       0x24b2               0xb6c          0x1122  (4386)
+.init.delay32               0x301e                0x1c            0x2a  (42)
+.dinit                      0x303a                 0xc            0x12  (18)
 
-                     Total program memory used (bytes):         0x14e2  (5346) 1%
+                     Total program memory used (bytes):         0x4569  (17769) 3%
 
 
 Data Memory  [Origin = 0x1000, Length = 0xc000]
@@ -105,64 +105,68 @@ External Symbols in Program Memory (by address):
                   0x000238                  __data_init
                   0x000238                  __data_init_extended
                   0x0002d2                  __DefaultInterrupt
-                  0x0002d6                  _Dfont
-                  0x0004b8                  _PlotLine
-                  0x000558                  _PlotVLine
-                  0x000596                  _PlotHLine
-                  0x0005d4                  _PlotRectangle
-                  0x00061a                  _PlotTriangle
-                  0x000652                  _PlotCircleQuadrant
-                  0x000768                  _PlotCircle
-                  0x00085c                  _PlotRoundedRect
-                  0x000958                  _PlotFilledRectangle
-                  0x000984                  _PlotRoundFilledSide
-                  0x000a70                  _PlotFiledRoundedRect
-                  0x000b06                  _PlotFilledCircle
-                  0x000b46                  _WriteChar
-                  0x000c16                  _WriteString
-                  0x000cea                  _SetTextSize
-                  0x000d04                  _SetTextWrap
-                  0x000d24                  _LCD_Write
-                  0x000de2                  _PlotPoint
-                  0x000e4c                  _LCD_SetAddr
-                  0x000eaa                  _LCD_Setup
-                  0x000eec                  _LCD_ClearDisplay
-                  0x000f1e                  _LCD_SetRotation
-                  0x000f3a                  _main
-                  0x000fc4                  ___delay32
+                  0x0002d6                  _doge
+                  0x0022d6                  _Dfont
+                  0x0024b2                  _PlotLine
+                  0x002552                  _PlotVLine
+                  0x002590                  _PlotHLine
+                  0x0025ce                  _PlotRectangle
+                  0x002614                  _PlotTriangle
+                  0x00264c                  _PlotCircleQuadrant
+                  0x002762                  _PlotCircle
+                  0x002856                  _PlotRoundedRect
+                  0x002952                  _PlotFilledRectangle
+                  0x00297e                  _PlotRoundFilledSide
+                  0x002a6a                  _PlotFiledRoundedRect
+                  0x002b00                  _PlotFilledCircle
+                  0x002b40                  _WriteChar
+                  0x002c10                  _WriteString
+                  0x002ce4                  _SetTextSize
+                  0x002cfe                  _SetTextWrap
+                  0x002d1e                  _PlotBitmap565
+                  0x002d76                  _LCD_Write
+                  0x002e34                  _PlotPoint
+                  0x002e9e                  _LCD_SetAddr
+                  0x002efc                  _LCD_Setup
+                  0x002f4a                  _LCD_ClearDisplay
+                  0x002f7c                  _LCD_SetRotation
+                  0x002f98                  _main
+                  0x00301e                  ___delay32
 
 External Symbols in Program Memory (by name):
 
-                  0x0002d6                  _Dfont
-                  0x000eec                  _LCD_ClearDisplay
-                  0x000e4c                  _LCD_SetAddr
-                  0x000f1e                  _LCD_SetRotation
-                  0x000eaa                  _LCD_Setup
-                  0x000d24                  _LCD_Write
-                  0x000768                  _PlotCircle
-                  0x000652                  _PlotCircleQuadrant
-                  0x000a70                  _PlotFiledRoundedRect
-                  0x000b06                  _PlotFilledCircle
-                  0x000958                  _PlotFilledRectangle
-                  0x000596                  _PlotHLine
-                  0x0004b8                  _PlotLine
-                  0x000de2                  _PlotPoint
-                  0x0005d4                  _PlotRectangle
-                  0x000984                  _PlotRoundFilledSide
-                  0x00085c                  _PlotRoundedRect
-                  0x00061a                  _PlotTriangle
-                  0x000558                  _PlotVLine
-                  0x000cea                  _SetTextSize
-                  0x000d04                  _SetTextWrap
-                  0x000b46                  _WriteChar
-                  0x000c16                  _WriteString
+                  0x0022d6                  _Dfont
+                  0x002f4a                  _LCD_ClearDisplay
+                  0x002e9e                  _LCD_SetAddr
+                  0x002f7c                  _LCD_SetRotation
+                  0x002efc                  _LCD_Setup
+                  0x002d76                  _LCD_Write
+                  0x002d1e                  _PlotBitmap565
+                  0x002762                  _PlotCircle
+                  0x00264c                  _PlotCircleQuadrant
+                  0x002a6a                  _PlotFiledRoundedRect
+                  0x002b00                  _PlotFilledCircle
+                  0x002952                  _PlotFilledRectangle
+                  0x002590                  _PlotHLine
+                  0x0024b2                  _PlotLine
+                  0x002e34                  _PlotPoint
+                  0x0025ce                  _PlotRectangle
+                  0x00297e                  _PlotRoundFilledSide
+                  0x002856                  _PlotRoundedRect
+                  0x002614                  _PlotTriangle
+                  0x002552                  _PlotVLine
+                  0x002ce4                  _SetTextSize
+                  0x002cfe                  _SetTextWrap
+                  0x002b40                  _WriteChar
+                  0x002c10                  _WriteString
                   0x0002d2                  __DefaultInterrupt
-                  0x000fc4                  ___delay32
+                  0x00301e                  ___delay32
                   0x000238                  __data_init
                   0x000238                  __data_init_extended
                   0x00022c                  __psv_init
                   0x000200                  __resetPRI
-                  0x000f3a                  _main
+                  0x0002d6                  _doge
+                  0x002f98                  _main
 
 Memory Configuration
 
@@ -268,30 +272,30 @@ __FUID3
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x1463
+.debug_info       0x000000       0x159b
  *(.debug_info)
- .debug_info      0x000000        0x7d2 build/default/production/LCD-2.0.o
- .debug_info      0x0007d2        0x963 build/default/production/GDGL.o
- .debug_info      0x001135        0x32e build/default/production/LCD-Drivers/ILI9163.o
+ .debug_info      0x000000        0x87b build/default/production/LCD-2.0.o
+ .debug_info      0x00087b        0x9f2 build/default/production/GDGL.o
+ .debug_info      0x00126d        0x32e build/default/production/LCD-Drivers/ILI9163.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000        0x2c0
+.debug_abbrev     0x000000        0x2fb
  *(.debug_abbrev)
- .debug_abbrev    0x000000         0xc7 build/default/production/LCD-2.0.o
- .debug_abbrev    0x0000c7        0x11d build/default/production/GDGL.o
- .debug_abbrev    0x0001e4         0xdc build/default/production/LCD-Drivers/ILI9163.o
+ .debug_abbrev    0x000000        0x102 build/default/production/LCD-2.0.o
+ .debug_abbrev    0x000102        0x11d build/default/production/GDGL.o
+ .debug_abbrev    0x00021f         0xdc build/default/production/LCD-Drivers/ILI9163.o
 
-.debug_line       0x000000        0xb19
+.debug_line       0x000000        0xb75
  *(.debug_line)
- .debug_line      0x000000        0x151 build/default/production/LCD-2.0.o
- .debug_line      0x000151        0x739 build/default/production/GDGL.o
- .debug_line      0x00088a        0x28f build/default/production/LCD-Drivers/ILI9163.o
+ .debug_line      0x000000        0x158 build/default/production/LCD-2.0.o
+ .debug_line      0x000158        0x77e build/default/production/GDGL.o
+ .debug_line      0x0008d6        0x29f build/default/production/LCD-Drivers/ILI9163.o
 
-.debug_frame      0x000000        0x1ac
+.debug_frame      0x000000        0x1bc
  *(.debug_frame)
  .debug_frame     0x000000         0x24 build/default/production/LCD-2.0.o
- .debug_frame     0x000024        0x114 build/default/production/GDGL.o
- .debug_frame     0x000138         0x74 build/default/production/LCD-Drivers/ILI9163.o
+ .debug_frame     0x000024        0x124 build/default/production/GDGL.o
+ .debug_frame     0x000148         0x74 build/default/production/LCD-Drivers/ILI9163.o
 
 .debug_str        0x000000         0x41
  *(.debug_str)
@@ -306,14 +310,14 @@ __FUID3
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000        0x1e3
+                  0x000000        0x1fe
  *(.debug_pubnames)
  .debug_pubnames
-                  0x000000         0x1b build/default/production/LCD-2.0.o
+                  0x000000         0x24 build/default/production/LCD-2.0.o
  .debug_pubnames
-                  0x00001b        0x153 build/default/production/GDGL.o
+                  0x000024        0x165 build/default/production/GDGL.o
  .debug_pubnames
-                  0x00016e         0x75 build/default/production/LCD-Drivers/ILI9163.o
+                  0x000189         0x75 build/default/production/LCD-Drivers/ILI9163.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -1391,42 +1395,44 @@ __c30_signature
  .config_JTAGEN
                   0x0557f0          0x2 build/default/production/LCD-2.0.o
 
-.const              0x82d6        0x1e2 load address 0x0002d6  
- .const             0x82d6        0x1dc build/default/production/GDGL.o
-                    0x82d6                  _Dfont
- .const             0x84b2          0x6 build/default/production/LCD-2.0.o
+.const              0x82d6       0x21dc load address 0x0002d6  
+ .const             0x82d6       0x2000 build/default/production/LCD-2.0.o
+                    0x82d6                  _doge
+ .const             0xa2d6        0x1dc build/default/production/GDGL.o
+                    0xa2d6                  _Dfont
 
-.text             0x0004b8        0xb0c
- .text            0x0004b8        0x86c build/default/production/GDGL.o
-                  0x0004b8                  _PlotLine
-                  0x000558                  _PlotVLine
-                  0x000596                  _PlotHLine
-                  0x0005d4                  _PlotRectangle
-                  0x00061a                  _PlotTriangle
-                  0x000652                  _PlotCircleQuadrant
-                  0x000768                  _PlotCircle
-                  0x00085c                  _PlotRoundedRect
-                  0x000958                  _PlotFilledRectangle
-                  0x000984                  _PlotRoundFilledSide
-                  0x000a70                  _PlotFiledRoundedRect
-                  0x000b06                  _PlotFilledCircle
-                  0x000b46                  _WriteChar
-                  0x000c16                  _WriteString
-                  0x000cea                  _SetTextSize
-                  0x000d04                  _SetTextWrap
- .text            0x000d24        0x216 build/default/production/LCD-Drivers/ILI9163.o
-                  0x000d24                  _LCD_Write
-                  0x000de2                  _PlotPoint
-                  0x000e4c                  _LCD_SetAddr
-                  0x000eaa                  _LCD_Setup
-                  0x000eec                  _LCD_ClearDisplay
-                  0x000f1e                  _LCD_SetRotation
- .text            0x000f3a         0x8a build/default/production/LCD-2.0.o
-                  0x000f3a                  _main
+.text             0x0024b2        0xb6c
+ .text            0x0024b2        0x8c4 build/default/production/GDGL.o
+                  0x0024b2                  _PlotLine
+                  0x002552                  _PlotVLine
+                  0x002590                  _PlotHLine
+                  0x0025ce                  _PlotRectangle
+                  0x002614                  _PlotTriangle
+                  0x00264c                  _PlotCircleQuadrant
+                  0x002762                  _PlotCircle
+                  0x002856                  _PlotRoundedRect
+                  0x002952                  _PlotFilledRectangle
+                  0x00297e                  _PlotRoundFilledSide
+                  0x002a6a                  _PlotFiledRoundedRect
+                  0x002b00                  _PlotFilledCircle
+                  0x002b40                  _WriteChar
+                  0x002c10                  _WriteString
+                  0x002ce4                  _SetTextSize
+                  0x002cfe                  _SetTextWrap
+                  0x002d1e                  _PlotBitmap565
+ .text            0x002d76        0x222 build/default/production/LCD-Drivers/ILI9163.o
+                  0x002d76                  _LCD_Write
+                  0x002e34                  _PlotPoint
+                  0x002e9e                  _LCD_SetAddr
+                  0x002efc                  _LCD_Setup
+                  0x002f4a                  _LCD_ClearDisplay
+                  0x002f7c                  _LCD_SetRotation
+ .text            0x002f98         0x86 build/default/production/LCD-2.0.o
+                  0x002f98                  _main
 
-.init.delay32     0x000fc4         0x1c
- .init.delay32    0x000fc4         0x1c c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a(delay32ep.eo)
-                  0x000fc4                  ___delay32
+.init.delay32     0x00301e         0x1c
+ .init.delay32    0x00301e         0x1c c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a(delay32ep.eo)
+                  0x00301e                  ___delay32
 
-.dinit            0x000fe0          0xc
- .dinit           0x000fe0          0xc data_init
+.dinit            0x00303a          0xc
+ .dinit           0x00303a          0xc data_init

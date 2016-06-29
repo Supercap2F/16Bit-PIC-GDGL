@@ -13,6 +13,7 @@
 #include <libpic30.h>
 #include "LCD-Drivers\ILI9163.h"
 #include "GDGL.h"
+#include "DogeImage.h"
 
 /***********************************************
  * Definitions                                 *
@@ -95,14 +96,24 @@ int main()
     LCD_Setup();
     LCD_ClearDisplay();
     
-    SetTextSize(4);
-    WriteString(11,50,"12:09",CYAN,BLACK);
+    //SetTextSize(4);
+    //WriteString(11,50,"12:09",CYAN,BLACK);
+
+    
+    PlotBitmap565(32,32,64,64,doge);
+    
     
     //PlotHLine(0,53,128,YELLOW);
     //PlotHLine(0,75,128,YELLOW);
     //PlotVLine(25,0,128,YELLOW);
-    //PlotVLine(103,0,128,YELLOW);
-                
+//    PlotVLine(103,0,128,RED);
+//    
+//    PlotCircle(63,63,63,RED);
+//    WriteString(0,0,"sup bruh",CYAN,BLACK);
+//    SetTextSize(2);
+//    WriteString(0,9,"Hello!",MAGENTA,BLACK);
+//    SetTextSize(3);
+//    WriteString(0,25,"0xBEEF",GREEN,BLACK);
     while(1);
 }
 
