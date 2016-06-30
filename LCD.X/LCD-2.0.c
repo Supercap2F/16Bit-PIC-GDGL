@@ -13,7 +13,7 @@
 #include <libpic30.h>
 #include "LCD-Drivers\ILI9163.h"
 #include "GDGL.h"
-#include "DogeImage.h"
+#include "TrumpImage.h"
 
 /***********************************************
  * Definitions                                 *
@@ -96,24 +96,71 @@ int main()
     LCD_Setup();
     LCD_ClearDisplay();
     
-    //SetTextSize(4);
-    //WriteString(11,50,"12:09",CYAN,BLACK);
+    PlotLineAA(10,10,80,14,CYAN,BLACK);
+    
+    x=40; 
+    y=0;
+    int del_x=1-2*40; 
+    int del_y=1;
+    int r_err=0;
 
+    while (x>=y) {
+        PlotLineAA(63 + x, 63 + y,63,63,CYAN,BLACK); // 3 plot all quadrants (circle drawn with symmetry)
+        PlotLineAA(63 + y, 63 + x,63,63,CYAN,BLACK); // 3
+        PlotLineAA(63 - y, 63 + x,63,63,CYAN,BLACK); // 2
+        PlotLineAA(63 - x, 63 + y,63,63,CYAN,BLACK); // 2            
+        PlotLineAA(63 - x, 63 - y,63,63,CYAN,BLACK); // 1
+        PlotLineAA(63 - y, 63 - x,63,63,CYAN,BLACK); // 1
+        PlotLineAA(63 + y, 63 - x,63,63,CYAN,BLACK); // 0
+        PlotLineAA(63 + x, 63 - y,63,63,CYAN,BLACK); // 0
+
+        y++;
+        r_err+=del_y;
+        del_y+=2;
+        if((2*r_err + del_x)>0) {
+            x--;
+            r_err+=del_x;
+            del_x+=2;
+        }
+    }
     
-    PlotBitmap565(32,32,64,64,doge);
     
-    
-    //PlotHLine(0,53,128,YELLOW);
-    //PlotHLine(0,75,128,YELLOW);
-    //PlotVLine(25,0,128,YELLOW);
-//    PlotVLine(103,0,128,RED);
+//    PlotBitmap565(64,20,64,64,image);
+//    WriteString(0,0,"hey u! LOOK",CYAN,BLACK);
+//    PlotLine(66,2,76,12,RED);
+//    PlotTriangle(74,15,78,15,78,9,RED);
+//    WriteChar(94,10,'T',CYAN,BLACK);
+//    WriteChar(100,10,'R',RED,BLACK);
+//    WriteChar(106,10,'U',GREEN,BLACK);
+//    WriteChar(112,10,'M',YELLOW,BLACK);
+//    WriteChar(118,10,'P',MAGENTA,BLACK);
+//    WriteChar(124,10,'!',BLUE,BLACK);
 //    
-//    PlotCircle(63,63,63,RED);
-//    WriteString(0,0,"sup bruh",CYAN,BLACK);
-//    SetTextSize(2);
-//    WriteString(0,9,"Hello!",MAGENTA,BLACK);
+//    PlotFilledRoundedRect(26,30,30,10,3,YELLOW);
+//    PlotFilledRoundedRect(26,42,30,10,3,YELLOW);
+//    PlotFilledRoundedRect(26,54,30,10,3,YELLOW);
+//    PlotFilledRoundedRect(26,66,30,10,3,YELLOW);
+//    
+//    WriteString(32,31,"sup",BLACK,YELLOW);
+//    WriteString(35,43,"hi",BLACK,YELLOW);
+//    WriteString(29,55,"bruh",BLACK,YELLOW);
+//    WriteString(29,67,"doge",BLACK,YELLOW);
+//    
+//    PlotFilledRoundedRect(40,79,81,23,4,WHITE);
+//    WriteString(45,83,"MAKE AMERICA",BLACK,WHITE);
+//    WriteString(45,91,"GREAT AGAIN!",BLACK,WHITE);
+//    PlotTriangle(98,79,100,69,108,79,WHITE);
+//    PlotTriangle(99,79,100,70,107,79,WHITE);
+//    PlotTriangle(100,79,100,71,106,79,WHITE);
+//    PlotTriangle(101,79,100,72,105,79,WHITE);
+//    PlotTriangle(102,79,100,73,104,79,WHITE);
+//    PlotTriangle(103,79,100,74,103,79,WHITE);
+//    
+//    
+//    LCD_SetRotation(BOT_LEF);
 //    SetTextSize(3);
-//    WriteString(0,25,"0xBEEF",GREEN,BLACK);
+//    WriteString(0,0,"0xFACE",MAGENTA,BLACK);
+    
     while(1);
 }
 

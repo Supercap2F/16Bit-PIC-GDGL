@@ -54,19 +54,45 @@ c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a(dat
                               c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a(crt0_extendedep.o) (__data_init_extended)
 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a(delay32ep.eo)
                               build/default/production/LCD-2.0.o (___delay32)
+c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(addsf3.epeo)
+                              build/default/production/GDGL.o (___subsf3)
+c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(divsf3.epeo)
+                              build/default/production/GDGL.o (___divsf3)
+c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(fixsfsi.epeo)
+                              build/default/production/GDGL.o (_(float, int, long long, short, float, short, int))
+c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(fixunssfsi.epeo)
+                              build/default/production/GDGL.o (___fixunssfsi)
+c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(floatsisf.epeo)
+                              build/default/production/GDGL.o (___floatsisf)
+c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(floatunsisf.epeo)
+                              build/default/production/GDGL.o (___floatunsisf)
+c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(fpack.epeo)
+                              c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(addsf3.epeo) (__fpack)
+c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(funpack.epeo)
+                              c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(fixsfsi.epeo) (__funpack)
+c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(funpack2.epeo)
+                              c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(addsf3.epeo) (__funpack2)
+c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(futil.epeo)
+                              c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(addsf3.epeo) (__fPropagateNaN)
+c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(mulsf3.epeo)
+                              build/default/production/GDGL.o (___mulsf3)
+c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(floatdisf.epeo)
+                              c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(floatsisf.epeo) (___floatdisf)
+c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(floatundisf.epeo)
+                              c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(floatunsisf.epeo) (___floatundisf)
 
 
 Program Memory  [Origin = 0x200, Length = 0x555ec]
 
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
-.text                        0x200                0xd6           0x141  (321)
-.const                       0x2d6              0x21dc          0x32ca  (13002)
-.text                       0x24b2               0xb6c          0x1122  (4386)
-.init.delay32               0x301e                0x1c            0x2a  (42)
-.dinit                      0x303a                 0xc            0x12  (18)
+.text                        0x200               0x424           0x636  (1590)
+.const                       0x624              0x21dc          0x32ca  (13002)
+.text                       0x2800              0x118c          0x1a52  (6738)
+.init.delay32               0x398c                0x1c            0x2a  (42)
+.dinit                      0x39a8                 0xc            0x12  (18)
 
-                     Total program memory used (bytes):         0x4569  (17769) 3%
+                     Total program memory used (bytes):         0x538e  (21390) 4%
 
 
 Data Memory  [Origin = 0x1000, Length = 0xc000]
@@ -105,68 +131,110 @@ External Symbols in Program Memory (by address):
                   0x000238                  __data_init
                   0x000238                  __data_init_extended
                   0x0002d2                  __DefaultInterrupt
-                  0x0002d6                  _doge
-                  0x0022d6                  _Dfont
-                  0x0024b2                  _PlotLine
-                  0x002552                  _PlotVLine
-                  0x002590                  _PlotHLine
-                  0x0025ce                  _PlotRectangle
-                  0x002614                  _PlotTriangle
-                  0x00264c                  _PlotCircleQuadrant
-                  0x002762                  _PlotCircle
-                  0x002856                  _PlotRoundedRect
-                  0x002952                  _PlotFilledRectangle
-                  0x00297e                  _PlotRoundFilledSide
-                  0x002a6a                  _PlotFiledRoundedRect
-                  0x002b00                  _PlotFilledCircle
-                  0x002b40                  _WriteChar
-                  0x002c10                  _WriteString
-                  0x002ce4                  _SetTextSize
-                  0x002cfe                  _SetTextWrap
-                  0x002d1e                  _PlotBitmap565
-                  0x002d76                  _LCD_Write
-                  0x002e34                  _PlotPoint
-                  0x002e9e                  _LCD_SetAddr
-                  0x002efc                  _LCD_Setup
-                  0x002f4a                  _LCD_ClearDisplay
-                  0x002f7c                  _LCD_SetRotation
-                  0x002f98                  _main
-                  0x00301e                  ___delay32
+                  0x0002d6                  ___subsf3
+                  0x0002d8                  ___addsf3
+                  0x000392                  ___divsf3
+                  0x000416                  ___fixsfsi
+                  0x000458                  ___fixunssfsi
+                  0x00048e                  ___floatsisf
+                  0x000494                  ___floatunsisf
+                  0x000498                  __fpack
+                  0x0004e4                  __funpack
+                  0x00050e                  __funpack2
+                  0x00051e                  __fPropagateNaN
+                  0x000530                  __fbopExit
+                  0x000538                  __fbopReturnNaN
+                  0x00053e                  ___mulsf3
+                  0x0005a6                  ___floatdisf
+                  0x0005c6                  ___floatundisf
+                  0x000624                  _image
+                  0x002624                  _Dfont
+                  0x002800                  _PlotLine
+                  0x0028a0                  _PlotVLine
+                  0x0028de                  _PlotHLine
+                  0x00291c                  _PlotRectangle
+                  0x002962                  _PlotTriangle
+                  0x00299a                  _PlotCircleQuadrant
+                  0x002ab0                  _PlotCircle
+                  0x002ba4                  _PlotRoundedRect
+                  0x002ca0                  _PlotFilledRectangle
+                  0x002ccc                  _PlotRoundFilledSide
+                  0x002db8                  _PlotFilledRoundedRect
+                  0x002e4e                  _PlotFilledCircle
+                  0x002e8e                  _WriteChar
+                  0x002f5e                  _WriteString
+                  0x003032                  _SetTextSize
+                  0x00304c                  _SetTextWrap
+                  0x00306c                  _PlotBitmap
+                  0x0030c4                  _PlotPointBrightness
+                  0x0031f8                  _PlotLineAA
+                  0x00357a                  _fpart
+                  0x00359c                  _rfpart
+                  0x0035b6                  _rnd
+                  0x0035d2                  _LCD_Write
+                  0x003690                  _PlotPoint
+                  0x0036fa                  _LCD_SetAddr
+                  0x003758                  _LCD_Setup
+                  0x0037a6                  _LCD_ClearDisplay
+                  0x0037d8                  _LCD_SetRotation
+                  0x0037f4                  _main
+                  0x00398c                  ___delay32
 
 External Symbols in Program Memory (by name):
 
-                  0x0022d6                  _Dfont
-                  0x002f4a                  _LCD_ClearDisplay
-                  0x002e9e                  _LCD_SetAddr
-                  0x002f7c                  _LCD_SetRotation
-                  0x002efc                  _LCD_Setup
-                  0x002d76                  _LCD_Write
-                  0x002d1e                  _PlotBitmap565
-                  0x002762                  _PlotCircle
-                  0x00264c                  _PlotCircleQuadrant
-                  0x002a6a                  _PlotFiledRoundedRect
-                  0x002b00                  _PlotFilledCircle
-                  0x002952                  _PlotFilledRectangle
-                  0x002590                  _PlotHLine
-                  0x0024b2                  _PlotLine
-                  0x002e34                  _PlotPoint
-                  0x0025ce                  _PlotRectangle
-                  0x00297e                  _PlotRoundFilledSide
-                  0x002856                  _PlotRoundedRect
-                  0x002614                  _PlotTriangle
-                  0x002552                  _PlotVLine
-                  0x002ce4                  _SetTextSize
-                  0x002cfe                  _SetTextWrap
-                  0x002b40                  _WriteChar
-                  0x002c10                  _WriteString
+                  0x002624                  _Dfont
+                  0x0037a6                  _LCD_ClearDisplay
+                  0x0036fa                  _LCD_SetAddr
+                  0x0037d8                  _LCD_SetRotation
+                  0x003758                  _LCD_Setup
+                  0x0035d2                  _LCD_Write
+                  0x00306c                  _PlotBitmap
+                  0x002ab0                  _PlotCircle
+                  0x00299a                  _PlotCircleQuadrant
+                  0x002e4e                  _PlotFilledCircle
+                  0x002ca0                  _PlotFilledRectangle
+                  0x002db8                  _PlotFilledRoundedRect
+                  0x0028de                  _PlotHLine
+                  0x002800                  _PlotLine
+                  0x0031f8                  _PlotLineAA
+                  0x003690                  _PlotPoint
+                  0x0030c4                  _PlotPointBrightness
+                  0x00291c                  _PlotRectangle
+                  0x002ccc                  _PlotRoundFilledSide
+                  0x002ba4                  _PlotRoundedRect
+                  0x002962                  _PlotTriangle
+                  0x0028a0                  _PlotVLine
+                  0x003032                  _SetTextSize
+                  0x00304c                  _SetTextWrap
+                  0x002e8e                  _WriteChar
+                  0x002f5e                  _WriteString
                   0x0002d2                  __DefaultInterrupt
-                  0x00301e                  ___delay32
+                  0x0002d8                  ___addsf3
+                  0x00398c                  ___delay32
+                  0x000392                  ___divsf3
+                  0x000416                  ___fixsfsi
+                  0x000458                  ___fixunssfsi
+                  0x0005a6                  ___floatdisf
+                  0x00048e                  ___floatsisf
+                  0x0005c6                  ___floatundisf
+                  0x000494                  ___floatunsisf
+                  0x00053e                  ___mulsf3
+                  0x0002d6                  ___subsf3
                   0x000238                  __data_init
                   0x000238                  __data_init_extended
+                  0x00051e                  __fPropagateNaN
+                  0x000530                  __fbopExit
+                  0x000538                  __fbopReturnNaN
+                  0x000498                  __fpack
+                  0x0004e4                  __funpack
+                  0x00050e                  __funpack2
                   0x00022c                  __psv_init
                   0x000200                  __resetPRI
-                  0x0002d6                  _doge
-                  0x002f98                  _main
+                  0x00357a                  _fpart
+                  0x000624                  _image
+                  0x0037f4                  _main
+                  0x00359c                  _rfpart
+                  0x0035b6                  _rnd
 
 Memory Configuration
 
@@ -217,7 +285,7 @@ LOAD c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libfx-elf.a
                   0x000002          0x2 SHORT 0x0 ((ABSOLUTE (__reset) >> 0x10) & 0x7f)
                   0x000003          0x2 SHORT 0x0
 
-.text             0x000200         0xd6
+.text             0x000200        0x424
  *(.init)
  .init            0x000200         0x38 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a(crt0_extendedep.o)
                   0x000200                  __resetPRI
@@ -235,6 +303,46 @@ LOAD c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libfx-elf.a
  *(.libm)
  *(.libdsp)
  *(.lib*)
+ .libm.subsf3     0x0002d6         0xbc c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(addsf3.epeo)
+                  0x0002d6                  ___subsf3
+                  0x0002d8                  ___addsf3
+ .libm.divfs3     0x000392         0x84 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(divsf3.epeo)
+                  0x000392                  ___divsf3
+ .libm.fixsfsi    0x000416         0x42 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(fixsfsi.epeo)
+                  0x000416                  _(float, int, long long, short, float, short, int)
+ .libm.fixunssfsi
+                  0x000458         0x36 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(fixunssfsi.epeo)
+                  0x000458                  ___fixunssfsi
+ .libm.floatsisf
+                  0x00048e          0x6 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(floatsisf.epeo)
+                  0x00048e                  ___floatsisf
+ .libm.floatunsisf
+                  0x000494          0x4 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(floatunsisf.epeo)
+                  0x000494                  ___floatunsisf
+ .libm.fpack      0x000498         0x4c c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(fpack.epeo)
+                  0x000498                  __fpack
+ .libm.funpack    0x0004e4         0x2a c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(funpack.epeo)
+                  0x0004e4                  __funpack
+ .libm.funpack2
+                  0x00050e         0x10 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(funpack2.epeo)
+                  0x00050e                  __funpack2
+ .libm.fPropagateNaN
+                  0x00051e         0x12 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(futil.epeo)
+                  0x00051e                  __fPropagateNaN
+ .libm.fbobExit
+                  0x000530          0x8 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(futil.epeo)
+                  0x000530                  __fbopExit
+ .libm.fbopReturnNaN
+                  0x000538          0x6 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(futil.epeo)
+                  0x000538                  __fbopReturnNaN
+ .libm.mulsf3     0x00053e         0x68 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(mulsf3.epeo)
+                  0x00053e                  ___mulsf3
+ .libm.floatdisf
+                  0x0005a6         0x20 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(floatdisf.epeo)
+                  0x0005a6                  ___floatdisf
+ .libm.floatundisf
+                  0x0005c6         0x5e c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(floatundisf.epeo)
+                  0x0005c6                  ___floatundisf
 
 usercode
  *(usercode)
@@ -272,30 +380,30 @@ __FUID3
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x159b
+.debug_info       0x000000       0x1845
  *(.debug_info)
- .debug_info      0x000000        0x87b build/default/production/LCD-2.0.o
- .debug_info      0x00087b        0x9f2 build/default/production/GDGL.o
- .debug_info      0x00126d        0x32e build/default/production/LCD-Drivers/ILI9163.o
+ .debug_info      0x000000        0x89f build/default/production/LCD-2.0.o
+ .debug_info      0x00089f        0xc78 build/default/production/GDGL.o
+ .debug_info      0x001517        0x32e build/default/production/LCD-Drivers/ILI9163.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000        0x2fb
+.debug_abbrev     0x000000        0x2ec
  *(.debug_abbrev)
- .debug_abbrev    0x000000        0x102 build/default/production/LCD-2.0.o
- .debug_abbrev    0x000102        0x11d build/default/production/GDGL.o
- .debug_abbrev    0x00021f         0xdc build/default/production/LCD-Drivers/ILI9163.o
+ .debug_abbrev    0x000000         0xf3 build/default/production/LCD-2.0.o
+ .debug_abbrev    0x0000f3        0x11d build/default/production/GDGL.o
+ .debug_abbrev    0x000210         0xdc build/default/production/LCD-Drivers/ILI9163.o
 
-.debug_line       0x000000        0xb75
+.debug_line       0x000000        0xe49
  *(.debug_line)
- .debug_line      0x000000        0x158 build/default/production/LCD-2.0.o
- .debug_line      0x000158        0x77e build/default/production/GDGL.o
- .debug_line      0x0008d6        0x29f build/default/production/LCD-Drivers/ILI9163.o
+ .debug_line      0x000000        0x20b build/default/production/LCD-2.0.o
+ .debug_line      0x00020b        0x99f build/default/production/GDGL.o
+ .debug_line      0x000baa        0x29f build/default/production/LCD-Drivers/ILI9163.o
 
-.debug_frame      0x000000        0x1bc
+.debug_frame      0x000000        0x20c
  *(.debug_frame)
  .debug_frame     0x000000         0x24 build/default/production/LCD-2.0.o
- .debug_frame     0x000024        0x124 build/default/production/GDGL.o
- .debug_frame     0x000148         0x74 build/default/production/LCD-Drivers/ILI9163.o
+ .debug_frame     0x000024        0x174 build/default/production/GDGL.o
+ .debug_frame     0x000198         0x74 build/default/production/LCD-Drivers/ILI9163.o
 
 .debug_str        0x000000         0x41
  *(.debug_str)
@@ -310,14 +418,14 @@ __FUID3
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000        0x1fe
+                  0x000000        0x241
  *(.debug_pubnames)
  .debug_pubnames
-                  0x000000         0x24 build/default/production/LCD-2.0.o
+                  0x000000         0x25 build/default/production/LCD-2.0.o
  .debug_pubnames
-                  0x000024        0x165 build/default/production/GDGL.o
+                  0x000025        0x1a7 build/default/production/GDGL.o
  .debug_pubnames
-                  0x000189         0x75 build/default/production/LCD-Drivers/ILI9163.o
+                  0x0001cc         0x75 build/default/production/LCD-Drivers/ILI9163.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -1358,7 +1466,7 @@ LOAD data_init
                   0x0000e8         0x2f build/default/production/LCD-Drivers/ILI9163.o
 
 __c30_signature
-                  0x000117         0x24
+                  0x000117         0x72
  __c30_signature
                   0x000117          0x6 build/default/production/LCD-2.0.o
  __c30_signature
@@ -1371,6 +1479,32 @@ __c30_signature
                   0x00012f          0x6 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a(data_init_extendedep.o)
  __c30_signature
                   0x000135          0x6 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a(delay32ep.eo)
+ __c30_signature
+                  0x00013b          0x6 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(addsf3.epeo)
+ __c30_signature
+                  0x000141          0x6 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(divsf3.epeo)
+ __c30_signature
+                  0x000147          0x6 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(fixsfsi.epeo)
+ __c30_signature
+                  0x00014d          0x6 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(fixunssfsi.epeo)
+ __c30_signature
+                  0x000153          0x6 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(floatsisf.epeo)
+ __c30_signature
+                  0x000159          0x6 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(floatunsisf.epeo)
+ __c30_signature
+                  0x00015f          0x6 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(fpack.epeo)
+ __c30_signature
+                  0x000165          0x6 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(funpack.epeo)
+ __c30_signature
+                  0x00016b          0x6 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(funpack2.epeo)
+ __c30_signature
+                  0x000171          0x6 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(futil.epeo)
+ __c30_signature
+                  0x000177          0x6 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(mulsf3.epeo)
+ __c30_signature
+                  0x00017d          0x6 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(floatdisf.epeo)
+ __c30_signature
+                  0x000183          0x6 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a(floatundisf.epeo)
 
 .ndata              0x1000          0x4
  .ndata             0x1000          0x4 build/default/production/GDGL.o
@@ -1395,44 +1529,49 @@ __c30_signature
  .config_JTAGEN
                   0x0557f0          0x2 build/default/production/LCD-2.0.o
 
-.const              0x82d6       0x21dc load address 0x0002d6  
- .const             0x82d6       0x2000 build/default/production/LCD-2.0.o
-                    0x82d6                  _doge
- .const             0xa2d6        0x1dc build/default/production/GDGL.o
-                    0xa2d6                  _Dfont
+.const              0x8624       0x21dc load address 0x000624  
+ .const             0x8624       0x2000 build/default/production/LCD-2.0.o
+                    0x8624                  _image
+ .const             0xa624        0x1dc build/default/production/GDGL.o
+                    0xa624                  _Dfont
 
-.text             0x0024b2        0xb6c
- .text            0x0024b2        0x8c4 build/default/production/GDGL.o
-                  0x0024b2                  _PlotLine
-                  0x002552                  _PlotVLine
-                  0x002590                  _PlotHLine
-                  0x0025ce                  _PlotRectangle
-                  0x002614                  _PlotTriangle
-                  0x00264c                  _PlotCircleQuadrant
-                  0x002762                  _PlotCircle
-                  0x002856                  _PlotRoundedRect
-                  0x002952                  _PlotFilledRectangle
-                  0x00297e                  _PlotRoundFilledSide
-                  0x002a6a                  _PlotFiledRoundedRect
-                  0x002b00                  _PlotFilledCircle
-                  0x002b40                  _WriteChar
-                  0x002c10                  _WriteString
-                  0x002ce4                  _SetTextSize
-                  0x002cfe                  _SetTextWrap
-                  0x002d1e                  _PlotBitmap565
- .text            0x002d76        0x222 build/default/production/LCD-Drivers/ILI9163.o
-                  0x002d76                  _LCD_Write
-                  0x002e34                  _PlotPoint
-                  0x002e9e                  _LCD_SetAddr
-                  0x002efc                  _LCD_Setup
-                  0x002f4a                  _LCD_ClearDisplay
-                  0x002f7c                  _LCD_SetRotation
- .text            0x002f98         0x86 build/default/production/LCD-2.0.o
-                  0x002f98                  _main
+.text             0x002800       0x118c
+ .text            0x002800        0xdd2 build/default/production/GDGL.o
+                  0x002800                  _PlotLine
+                  0x0028a0                  _PlotVLine
+                  0x0028de                  _PlotHLine
+                  0x00291c                  _PlotRectangle
+                  0x002962                  _PlotTriangle
+                  0x00299a                  _PlotCircleQuadrant
+                  0x002ab0                  _PlotCircle
+                  0x002ba4                  _PlotRoundedRect
+                  0x002ca0                  _PlotFilledRectangle
+                  0x002ccc                  _PlotRoundFilledSide
+                  0x002db8                  _PlotFilledRoundedRect
+                  0x002e4e                  _PlotFilledCircle
+                  0x002e8e                  _WriteChar
+                  0x002f5e                  _WriteString
+                  0x003032                  _SetTextSize
+                  0x00304c                  _SetTextWrap
+                  0x00306c                  _PlotBitmap
+                  0x0030c4                  _PlotPointBrightness
+                  0x0031f8                  _PlotLineAA
+                  0x00357a                  _fpart
+                  0x00359c                  _rfpart
+                  0x0035b6                  _rnd
+ .text            0x0035d2        0x222 build/default/production/LCD-Drivers/ILI9163.o
+                  0x0035d2                  _LCD_Write
+                  0x003690                  _PlotPoint
+                  0x0036fa                  _LCD_SetAddr
+                  0x003758                  _LCD_Setup
+                  0x0037a6                  _LCD_ClearDisplay
+                  0x0037d8                  _LCD_SetRotation
+ .text            0x0037f4        0x198 build/default/production/LCD-2.0.o
+                  0x0037f4                  _main
 
-.init.delay32     0x00301e         0x1c
- .init.delay32    0x00301e         0x1c c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a(delay32ep.eo)
-                  0x00301e                  ___delay32
+.init.delay32     0x00398c         0x1c
+ .init.delay32    0x00398c         0x1c c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a(delay32ep.eo)
+                  0x00398c                  ___delay32
 
-.dinit            0x00303a          0xc
- .dinit           0x00303a          0xc data_init
+.dinit            0x0039a8          0xc
+ .dinit           0x0039a8          0xc data_init
