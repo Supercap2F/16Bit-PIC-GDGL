@@ -123,7 +123,7 @@ int main()
             del_x+=2;
         }
     }
-    
+    //test
     
 //    PlotBitmap565(64,20,64,64,image);
 //    WriteString(0,0,"hey u! LOOK",CYAN,BLACK);
