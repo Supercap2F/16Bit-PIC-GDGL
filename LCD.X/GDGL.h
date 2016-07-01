@@ -43,17 +43,6 @@ void SetTextWrap(char Tx_wrap);
 /* Bitmap Functions: */
 void PlotBitmap(int x0, int y0, int w, int h, const unsigned short *image);
 
-/* Anti-Aliasing Functions: */
-void PlotLineAA(int x0, int y0, int x1, int y1, unsigned short f_color, unsigned short b_color);
-void PlotCircleAA(int x0, int y0, int r, int f_color, int b_color);
-int PlotPointBrightness(int x, int y, unsigned short f_color, unsigned short b_color,float brightness);
-
-/* Support Functions: */
-int GDGL_abs(int num);
-float fpart(float x);
-float rfpart(float x);
-int rnd(float x);
-
 #endif	/* INC_OLED_H */
 
 
