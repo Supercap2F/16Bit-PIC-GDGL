@@ -21,7 +21,7 @@
  * function prototypes                          *
  ************************************************/
 /* Standard Aliasing Functions:*/
-int PlotLine(int x0, int y0, int x1, int y1, int color);
+void PlotLine(int x0, int y0, int x1, int y1, int color);
 void PlotCircle(int x0, int y0, int r, int color);
 void PlotVLine(int x, int y, int length, int color);
 void PlotHLine(int x, int y, int length, int color);
@@ -42,6 +42,9 @@ void SetTextWrap(char Tx_wrap);
 
 /* Bitmap Functions: */
 void PlotBitmap(int x0, int y0, int w, int h, const unsigned short *image);
+
+/* Support Functions: */
+int GDGL_abs(int num);
 
 #endif	/* INC_OLED_H */
 

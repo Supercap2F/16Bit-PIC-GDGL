@@ -1,59 +1,88 @@
+/***********************************************************************************
+ * Graphical Display Graphics Library                                              *
+ *                                                                                 *
+ * Copyright (c) 2016, Supercap2F                                                  *
+ * All rights reserved.                                                            *
+ *                                                                                 *
+ * Redistribution and use in source and binary forms, with or without              *     
+ * modification, are permitted provided that the following conditions are met:     *
+ *                                                                                 *
+ *    * Redistributions of source code must retain the above copyright notice,     *
+ *      this list of conditions and the following disclaimer.                      *
+ *                                                                                 *
+ *    * Redistributions in binary form must reproduce the above copyright notice,  *
+ *      this list of conditions and the following disclaimer in the documentation  *
+ *      and/or other materials provided with the distribution.                     *
+ *                                                                                 *
+ *    * Neither the name of 16Bit-PIC-GDGL nor the names of its                    *
+ *      contributors may be used to endorse or promote products derived from       *
+ *      this software without specific prior written permission.                   *          
+ *                                                                                 *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"     *
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE       *
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE  *
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE    *
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL      *
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR      *
+ * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER      *
+ * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,   *
+ * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE   *
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.            *
+ *                                                                                 *
+ * Project repo here:                                                              *
+ *      https://github.com/Supercap2F/16Bit-PIC-GDGL                               *
+ ***********************************************************************************/
 /************************************************
- * graphical display graphics library           *
+ * Included Files                               *
  ************************************************/
-/************************************************
- * Included files                               *
- ************************************************/
-#include <stdlib.h>
 #include <xc.h>
 #include "GDGL.h"
-#include "LCD-Drivers\ILI9163.h"
-#include "Fonts\DefaultFont.h"
+#include "LCD-Drivers\ILI9163.h" // header file for display driver
+#include "Fonts\DefaultFont.h"   // the default font file
 
 /************************************************
- * Global variables                             *
+ * Global Variables                             *
  ************************************************/
-int tsize=1;  // text size variable
+int tsize=1;   // text size variable
 char txwrap=1; // text wrap variable: 1=wrap 0=don't wrap
 
 /************************************************
  * PlotLine function - This bit of code is      *
  * based on Bresenham's Line Algorithm but      *
- * is written by jorticus. Be sure and check    *
- * out his awesome project here:                *
- * https://github.com/jorticus/zeitgeber-firmware                       
+ * was written by "jorticus" and paraphrased by *
+ * me. His project here:                        *
+ *https://github.com/jorticus/zeitgeber-firmware*                    
  ************************************************/
-int PlotLine(int x0, int y0, int x1, int y1, int color) {
-    int dx, dy;
-	int sx, sy, err;
-	int e2;
+void PlotLine(int x0, int y0, int x1, int y1, int color) {
+	int err2; // second error variable, always twice err 
 
-    dx = abs(x1 - x0);
-    dy = abs(y1 - y0);
+    int deltaX = GDGL_abs(x1 - x0);   // delta x 
+    int deltaY = GDGL_abs(y1 - y0);   // delta y
 
-    sx = (x0 < x1) ? 1 : -1;
-    sy = (y0 < y1) ? 1 : -1;
-    err = dx - dy;
+    int sx = (x0 < x1) ? 1 : -1; // x direction
+    int sy = (y0 < y1) ? 1 : -1; // y direction 
+    int err = deltaX - deltaY;   // error variable 
 
     while (1) {
-        PlotPoint(x0, y0, color);
+        PlotPoint(x0, y0, color); // Plot the current point on the line
 
-        if ((x0 == x1) && (y0 == y1)) return(GDGL_OUTOFRANGE);
-        e2 = 2 * err;
-        if (e2 > -dy) {
-            err = err - dy;
-            x0 = x0 + sx;
-        }
-        if (e2 < dx) {
-            err = err + dx;
-            y0 = y0 + sy;
+        if((x0==x1)&&(y0==y1))    // if finished drawing line 
+            return;               //    return 
+        err2=2*err;               //
+        if (err2 > -deltaY) {     // check if the error is great enough to increment x0 (for more vertical octants)
+            err -= deltaY;        //
+            x0 += sx;             //
+        }                         //
+        if (err2 < deltaX) {      // check if the error is great enough to increment y0 (for more horizontal octants)
+            err += deltaX;        //
+            y0 += sy;             //
         }
     }
 }
 
 /************************************************
- * PlotVLine Function - this function plots a   *
- * optimized vertical line                      *
+ * PlotVLine Function - This function plots a   *
+ * optimized vertical line.                     *
  ************************************************/
 void PlotVLine(int x, int y, int length, int color) {
     int t;
@@ -61,12 +90,12 @@ void PlotVLine(int x, int y, int length, int color) {
         length=0-length; // swap length sign
         y=y-length;      // swap y position
     }
-    for(t=0;t<length;t++) 
-        PlotPoint(x,y+t,color);
+    for(t=0;t<length;t++)       // plot the vertical line
+        PlotPoint(x,y+t,color); //
 }
 /************************************************
- * PlotHLine Function - this function plots a   *
- * optimized horizontal line                    *
+ * PlotHLine Function - This function plots a   *
+ * optimized horizontal line.                   *
  ************************************************/
 void PlotHLine(int x, int y, int length, int color) {
     int t;
@@ -74,8 +103,8 @@ void PlotHLine(int x, int y, int length, int color) {
         length=0-length; // swap length sign
         x=x-length;      // swap y position
     }
-    for(t=0;t<length;t++) 
-        PlotPoint(x+t,y,color);
+    for(t=0;t<length;t++)       // plot the horizontal line
+        PlotPoint(x+t,y,color); //
 }
 /************************************************
  * PlotRectangle Function - this function plots *
@@ -351,6 +380,13 @@ void PlotBitmap(int x0, int y0, int w, int h,const unsigned short *image){
             PlotPoint(x+x0,y+y0,*(image+(x+y*w)));    
 }
 
+
+int GDGL_abs(int num) {
+  if(num<0)         // if the number is negative 
+    return(-num);   //  return it's positive 
+  else              // else 
+    return(num);    //  return the number 
+}
 /*********************************************************************************
  * REASOURCES:                                                                   *
  * http://web.engr.oregonstate.edu/~sllu/bcircle.pdf - circle drawing algorithm  *

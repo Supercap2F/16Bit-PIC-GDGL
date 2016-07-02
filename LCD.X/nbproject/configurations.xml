@@ -7,8 +7,6 @@
       <itemPath>GDGL.h</itemPath>
       <itemPath>LCD-Drivers/ILI9163.h</itemPath>
       <itemPath>Fonts/DefaultFont.h</itemPath>
-      <itemPath>DogeImage.h</itemPath>
-      <itemPath>TrumpImage.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
