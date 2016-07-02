@@ -22,17 +22,17 @@
  ************************************************/
 /* Standard Aliasing Functions:*/
 void PlotLine(int x0, int y0, int x1, int y1, int color);
-void PlotCircle(int x0, int y0, int r, int color);
 void PlotVLine(int x, int y, int length, int color);
 void PlotHLine(int x, int y, int length, int color);
 void PlotRectangle(int x, int y, int w, int h, int color);
 void PlotTriangle(int xA, int yA, int xB, int yB, int xC, int yC, int color);
-void PlotCircleQuadrant(int CX, int CY,int R,int quad, int color);
-void PlotRoundedRect(int x, int y, int w, int h, int r, int color);
+int  PlotCircleQuadrant(int x0, int y0, int r, int quad, int color);
+int  PlotCircle(int x0, int y0, int r, int color);
+int  PlotRoundedRect(int x, int y, int w, int h, int r, int color);
 void PlotFilledRectangle(int x, int y, int w, int h, int color);
 void PlotRoundFilledSide(int x0, int y0, int r, int h, int RorL, int color);
-void PlotFilledRoundedRect(int x0, int y0, int w, int h, int r, int color);
-void PlotFilledCircle(int x0, int y0, int r, int color);
+int  PlotFilledRoundedRect(int x0, int y0, int w, int h, int r, int color);
+int PlotFilledCircle(int x0, int y0, int r, int color);
 
 /* Text Functions: */
 int WriteChar(int x0, int y0, unsigned char letter, int color, int backcolor);

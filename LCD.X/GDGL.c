@@ -47,7 +47,7 @@ int tsize=1;   // text size variable
 char txwrap=1; // text wrap variable: 1=wrap 0=don't wrap
 
 /************************************************
- * PlotLine function - This bit of code is      *
+ * PlotLine Function - This bit of code is      *
  * based on Bresenham's Line Algorithm but      *
  * was written by "jorticus" and paraphrased by *
  * me. His project here:                        *
@@ -107,26 +107,26 @@ void PlotHLine(int x, int y, int length, int color) {
         PlotPoint(x+t,y,color); //
 }
 /************************************************
- * PlotRectangle Function - this function plots *
- * optimized rectangle                          *
+ * PlotRectangle Function - This function plots *
+ * optimized rectangle.                         *
  ************************************************/
 void PlotRectangle(int x, int y, int w, int h, int color) {
-    PlotHLine(x,y,w,color);   // plot top line
+    PlotHLine(x,y,w,color);     // plot top line
     PlotHLine(x,y+h-1,w,color); // plot bottom line
-    PlotVLine(x,y,h,color);   // plot left line
+    PlotVLine(x,y,h,color);     // plot left line
     PlotVLine(x+w-1,y,h,color); // plot right line
 }
 /************************************************
- * PlotTriangle Function - this function plots  *
- * triangle ABC                                 *
+ * PlotTriangle Function - This function plots  *
+ * triangle ABC.                                *
  ************************************************/
 void PlotTriangle(int xA, int yA, int xB, int yB, int xC, int yC, int color){
-    PlotLine(xA,yA,xB,yB,color);
-    PlotLine(xB,yB,xC,yC,color);
-    PlotLine(xA,yA,xC,yC,color);
+    PlotLine(xA,yA,xB,yB,color); // plot first segment AB
+    PlotLine(xB,yB,xC,yC,color); // plot second segment BC
+    PlotLine(xA,yA,xC,yC,color); // plot third segment AC
 }
 /************************************************
- * PlotCirculeQuadrant Function - this function *
+ * PlotCirculeQuadrant Function - This function *
  * plots a quadrant of a circle at a given      *
  * location (x,y). Quadrant numbers:            *
  *     |                                        *
@@ -134,31 +134,36 @@ void PlotTriangle(int xA, int yA, int xB, int yB, int xC, int yC, int color){
  * ---------                                    *
  *   2 | 3                                      *
  *     |                                        *
+ * Function is based upon Bresenham's circle    *
+ * drawing algorithm.                           *
  ************************************************/
-void PlotCircleQuadrant(int x0, int y0,int r,int quad, int color) {
+int PlotCircleQuadrant(int x0, int y0, int r, int quad, int color) {
    int x=r; 
    int y=0;
    int del_x=1-2*r; 
    int del_y=1;
    int r_err=0;
    
+   if(quad<0 || quad>3)         // if sent a number that is not a quadrant 
+       return(GDGL_OUTOFRANGE); // return error
+   
    while (x>=y) {
      switch(quad) {
            case 3:
-               PlotPoint(x0 + x, y0 + y,color); // 3
-               PlotPoint(x0 + y, y0 + x,color); // 3
+               PlotPoint(x0 + x, y0 + y,color); // third quadrant 
+               PlotPoint(x0 + y, y0 + x,color); // 
                break;
            case 2:
-               PlotPoint(x0 - y, y0 + x,color); // 2
-               PlotPoint(x0 - x, y0 + y,color); // 2
+               PlotPoint(x0 - y, y0 + x,color); // second quadrant
+               PlotPoint(x0 - x, y0 + y,color); // 
                break;
            case 1:
-               PlotPoint(x0 - x, y0 - y,color); // 1
-               PlotPoint(x0 - y, y0 - x,color); // 1
+               PlotPoint(x0 - x, y0 - y,color); // first quadrant
+               PlotPoint(x0 - y, y0 - x,color); // 
                break;
            case 0:
-               PlotPoint(x0 + y, y0 - x,color); // 0
-               PlotPoint(x0 + x, y0 - y,color); // 0
+               PlotPoint(x0 + y, y0 - x,color); // zero quadrant 
+               PlotPoint(x0 + x, y0 - y,color); // 
                break;
        }
       y++;
@@ -170,17 +175,23 @@ void PlotCircleQuadrant(int x0, int y0,int r,int quad, int color) {
           del_x+=2;
       }
    }
+   return(GDGL_SUCCESS);
 }
 /************************************************
- * PlotCircle Function - based upon Bresenham's *
- * circle drawing algorithm.                     *
+ * PlotCircle Function - This function plots a  *
+ * circle with the center at x0,y0 and the      *
+ * radius r. This is based upon Bresenham's     *
+ * circle drawing algorithm.                    *
  ************************************************/
-void PlotCircle(int x0, int y0, int r, int color)  {
+int PlotCircle(int x0, int y0, int r, int color)  {
    int x=r; 
    int y=0;
    int del_x=1-2*r; 
    int del_y=1;
    int r_err=0;
+   
+   if(r<0)                      // if function is sent a negative radius
+       return(GDGL_OUTOFRANGE); //     return error 
    
    while (x>=y) {
       PlotPoint(x0 + x, y0 + y,color); // 3 plot all quadrants (circle drawn with symmetry)
@@ -201,12 +212,16 @@ void PlotCircle(int x0, int y0, int r, int color)  {
           del_x+=2;
       }
    }
+   return(GDGL_SUCCESS);
 }
 /************************************************
  * PlotRoundRect Function - Plots a rectangle   *
- * with rounded corners                         *
+ * with rounded corners.                        *
  ************************************************/
-void PlotRoundedRect(int x, int y, int w, int h, int r, int color){
+int PlotRoundedRect(int x, int y, int w, int h, int r, int color){
+    if(r<0)                      // if function is sent a negative radius
+        return(GDGL_OUTOFRANGE); //     return error 
+    
     PlotHLine(x+r,y,w-2*r,color);     // plot top line
     PlotHLine(x+r,y+h-1,w-2*r,color); // plot bottom line
     PlotVLine(x,y+r,h-2*r,color);     // plot left line
@@ -216,20 +231,22 @@ void PlotRoundedRect(int x, int y, int w, int h, int r, int color){
     PlotCircleQuadrant(x+w-r-1,y+r,r,0,color);     // plot top right (quad 0)
     PlotCircleQuadrant(x+w-r-1,y+h-r-1,r,3,color); // plot bottom right (quad 3)      
     PlotCircleQuadrant(x+r,y+h-r-1,r,2,color);     // plot bottom left (quad 2)
+    return(GDGL_SUCCESS);
 }
 /************************************************
  * PlotFilledRectangle Function - Plots a       *
- * filled rectangle                             *
+ * filled rectangle.                            *
  ************************************************/
 void PlotFilledRectangle(int x, int y, int w, int h, int color) {
     int z;
-    for(z=x;z<w+x;z++)
-        PlotVLine(z,y,h,color);
+    for(z=x;z<w+x;z++)          // plot the rectangle with vertical lines 
+        PlotVLine(z,y,h,color); // 
 }
 /************************************************
- * PlotRoundFilledSide Function - function      *
+ * PlotRoundFilledSide Function - Function      *
  * plots a rectangle side with rounded corners. *
- * 0 = right, 1 = left                          *  
+ * 0 = right, 1 = left. This is based upon      *
+ * Bresenham's circle drawing algorithm.        *                    
  ************************************************/
 void PlotRoundFilledSide(int x0, int y0, int r, int h, int RorL, int color){
     int x=r; 
@@ -257,33 +274,41 @@ void PlotRoundFilledSide(int x0, int y0, int r, int h, int RorL, int color){
           del_x+=2;
       }
    }
-    
 }
 
 /************************************************
- * PlotFilledRoundedRect Function - function    *
+ * PlotFilledRoundedRect Function - Function    *
  * plots a rectangle with rounded corners.      *
  ************************************************/
-void PlotFilledRoundedRect(int x0, int y0, int w, int h, int r, int color) {
+int PlotFilledRoundedRect(int x0, int y0, int w, int h, int r, int color) {
     int z;
+    if(r<0)                      // if function is sent a negative radius value 
+        return(GDGL_OUTOFRANGE); //     return error 
+    
     for(z=y0;z<h+y0;z++)                  // plot center of the rounded rectangle 
         PlotHLine(x0+r,z,w-2*r,color);    //
     
     PlotRoundFilledSide(x0+w-r-1, y0+r, r, h-2*r-1, 0, color); // plot right side 
     PlotRoundFilledSide(x0+r,     y0+r, r, h-2*r-1, 1, color); // plot left side 
+    return(GDGL_SUCCESS);
 }
 
 /************************************************
- * PlotFilledRoundedRect Function - function    *
+ * PlotFilledRoundedRect Function - Function    *
  * plots a rectangle with rounded corners.      *
  ************************************************/
-void PlotFilledCircle(int x0, int y0, int r, int color){
+int PlotFilledCircle(int x0, int y0, int r, int color){
+    if(r<0)                      // if function is sent a negative radius value
+        return(GDGL_OUTOFRANGE); //     return error 
+    
     PlotVLine(x0, y0-r, 2*r+1, color);
     PlotRoundFilledSide(x0, y0, r, 0, 0, color); // plot right side
     PlotRoundFilledSide(x0, y0, r, 0, 1, color); // plot left side 
+    return(GDGL_SUCCESS);
 }
+
 /*******************************************************************************
- * Text drawing functions past this point                                      *
+ * Text drawing functions past this point.                                     *
  *******************************************************************************/
 /************************************************
  * WriteChar Function - function plots a single *
