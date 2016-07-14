@@ -405,7 +405,6 @@ void PlotBitmap(int x0, int y0, int w, int h,const unsigned short *image){
             PlotPoint(x+x0,y+y0,*(image+(x+y*w)));    
 }
 
-
 int GDGL_abs(int num) {
   if(num<0)         // if the number is negative 
     return(-num);   //  return it's positive 

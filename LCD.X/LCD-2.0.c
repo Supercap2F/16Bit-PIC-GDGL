@@ -13,6 +13,7 @@
 #include <libpic30.h>
 #include "LCD-Drivers\ILI9163.h"
 #include "GDGL.h"
+#include "Images\Bird_128x128_C.h"
 
 /***********************************************
  * Definitions                                 *
@@ -94,6 +95,8 @@ int main()
     
     LCD_Setup();
     LCD_ClearDisplay();
+    
+    PlotBitmap(0,0,128,64,bird_color);
     
     while(1);
 }
