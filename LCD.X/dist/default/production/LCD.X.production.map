@@ -23,7 +23,7 @@ Command:
   -Lc:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../support/dsPIC33F/gld \
   build/default/production/LCD-2.0.o \
   build/default/production/GDGL.o \
-  build/default/production/LCD-Drivers/ILI9163.o \
+  build/default/production/LCD-Drivers/SSD1351.o \
   --local-stack \
   --defsym=__MPLAB_BUILD=1 \
   -Tp24EP512GP202.gld.00 \
@@ -53,7 +53,7 @@ c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a(crt
 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a(data_init_extendedep.o)
                               c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a(crt0_extendedep.o) (__data_init_extended)
 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a(delay32ep.eo)
-                              build/default/production/LCD-2.0.o (___delay32)
+                              build/default/production/LCD-Drivers/SSD1351.o (___delay32)
 
 
 Program Memory  [Origin = 0x200, Length = 0x555ec]
@@ -62,11 +62,11 @@ section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200                0xd6           0x141  (321)
 .const                       0x2d6              0x41dc          0x62ca  (25290)
-.text                       0x44b2               0xbca          0x11af  (4527)
-.init.delay32               0x507c                0x1c            0x2a  (42)
-.dinit                      0x5098                 0xc            0x12  (18)
+.text                       0x44b2               0xbf4          0x11ee  (4590)
+.init.delay32               0x50a6                0x1c            0x2a  (42)
+.dinit                      0x50c2                 0xc            0x12  (18)
 
-                     Total program memory used (bytes):         0x75f6  (30198) 5%
+                     Total program memory used (bytes):         0x7635  (30261) 5%
 
 
 Data Memory  [Origin = 0x1000, Length = 0xc000]
@@ -102,8 +102,8 @@ External Symbols in Program Memory (by address):
 
                   0x000200                  __resetPRI
                   0x00022c                  __psv_init
-                  0x000238                  __data_init
                   0x000238                  __data_init_extended
+                  0x000238                  __data_init
                   0x0002d2                  __DefaultInterrupt
                   0x0002d6                  _bird_color
                   0x0042d6                  _Dfont
@@ -126,22 +126,18 @@ External Symbols in Program Memory (by address):
                   0x004d66                  _PlotBitmap
                   0x004dbe                  _GDGL_abs
                   0x004dd4                  _LCD_Write
-                  0x004e92                  _PlotPoint
-                  0x004efc                  _LCD_SetAddr
-                  0x004f5a                  _LCD_Setup
-                  0x004fa8                  _LCD_ClearDisplay
-                  0x004fda                  _LCD_SetRotation
-                  0x004ff6                  _main
-                  0x00507c                  ___delay32
+                  0x004e24                  _LCD_Setup
+                  0x004f52                  _PlotPoint
+                  0x004fbc                  _LCD_SetAddr
+                  0x005002                  _main
+                  0x0050a6                  ___delay32
 
 External Symbols in Program Memory (by name):
 
                   0x0042d6                  _Dfont
                   0x004dbe                  _GDGL_abs
-                  0x004fa8                  _LCD_ClearDisplay
-                  0x004efc                  _LCD_SetAddr
-                  0x004fda                  _LCD_SetRotation
-                  0x004f5a                  _LCD_Setup
+                  0x004fbc                  _LCD_SetAddr
+                  0x004e24                  _LCD_Setup
                   0x004dd4                  _LCD_Write
                   0x004d66                  _PlotBitmap
                   0x004774                  _PlotCircle
@@ -151,7 +147,7 @@ External Symbols in Program Memory (by name):
                   0x004a96                  _PlotFilledRoundedRect
                   0x004590                  _PlotHLine
                   0x0044b2                  _PlotLine
-                  0x004e92                  _PlotPoint
+                  0x004f52                  _PlotPoint
                   0x0045ce                  _PlotRectangle
                   0x0049aa                  _PlotRoundFilledSide
                   0x004874                  _PlotRoundedRect
@@ -162,13 +158,13 @@ External Symbols in Program Memory (by name):
                   0x004b88                  _WriteChar
                   0x004c58                  _WriteString
                   0x0002d2                  __DefaultInterrupt
-                  0x00507c                  ___delay32
+                  0x0050a6                  ___delay32
                   0x000238                  __data_init
                   0x000238                  __data_init_extended
                   0x00022c                  __psv_init
                   0x000200                  __resetPRI
                   0x0002d6                  _bird_color
-                  0x004ff6                  _main
+                  0x005002                  _main
 
 Memory Configuration
 
@@ -193,7 +189,7 @@ Linker script and memory map
 
 LOAD build/default/production/LCD-2.0.o
 LOAD build/default/production/GDGL.o
-LOAD build/default/production/LCD-Drivers/ILI9163.o
+LOAD build/default/production/LCD-Drivers/SSD1351.o
                     0x0001                  __MPLAB_BUILD = 0x1
 LOAD c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib/PIC24E\libp24EP512GP202-elf.a
 LOAD c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libfx-elf.a
@@ -274,36 +270,36 @@ __FUID3
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x1578
+.debug_info       0x000000       0x1484
  *(.debug_info)
- .debug_info      0x000000        0x822 build/default/production/LCD-2.0.o
- .debug_info      0x000822        0xa28 build/default/production/GDGL.o
- .debug_info      0x00124a        0x32e build/default/production/LCD-Drivers/ILI9163.o
+ .debug_info      0x000000        0x5ee build/default/production/LCD-2.0.o
+ .debug_info      0x0005ee        0xa28 build/default/production/GDGL.o
+ .debug_info      0x001016        0x46e build/default/production/LCD-Drivers/SSD1351.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000        0x2fb
+.debug_abbrev     0x000000        0x2e6
  *(.debug_abbrev)
- .debug_abbrev    0x000000        0x102 build/default/production/LCD-2.0.o
- .debug_abbrev    0x000102        0x11d build/default/production/GDGL.o
- .debug_abbrev    0x00021f         0xdc build/default/production/LCD-Drivers/ILI9163.o
+ .debug_abbrev    0x000000        0x104 build/default/production/LCD-2.0.o
+ .debug_abbrev    0x000104        0x11d build/default/production/GDGL.o
+ .debug_abbrev    0x000221         0xc5 build/default/production/LCD-Drivers/SSD1351.o
 
-.debug_line       0x000000        0xc24
+.debug_line       0x000000        0xcd8
  *(.debug_line)
  .debug_line      0x000000        0x164 build/default/production/LCD-2.0.o
  .debug_line      0x000164        0x821 build/default/production/GDGL.o
- .debug_line      0x000985        0x29f build/default/production/LCD-Drivers/ILI9163.o
+ .debug_line      0x000985        0x353 build/default/production/LCD-Drivers/SSD1351.o
 
-.debug_frame      0x000000        0x1cc
+.debug_frame      0x000000        0x1ac
  *(.debug_frame)
  .debug_frame     0x000000         0x24 build/default/production/LCD-2.0.o
  .debug_frame     0x000024        0x134 build/default/production/GDGL.o
- .debug_frame     0x000158         0x74 build/default/production/LCD-Drivers/ILI9163.o
+ .debug_frame     0x000158         0x54 build/default/production/LCD-Drivers/SSD1351.o
 
-.debug_str        0x000000         0x4c
+.debug_str        0x000000         0x43
  *(.debug_str)
- .debug_str       0x000000         0x33 build/default/production/LCD-2.0.o
- .debug_str       0x000033         0x10 build/default/production/GDGL.o
- .debug_str       0x000043          0x9 build/default/production/LCD-Drivers/ILI9163.o
+ .debug_str       0x000000         0x21 build/default/production/LCD-2.0.o
+ .debug_str       0x000021         0x10 build/default/production/GDGL.o
+ .debug_str       0x000031         0x12 build/default/production/LCD-Drivers/SSD1351.o
 
 .debug_loc
  *(.debug_loc)
@@ -312,14 +308,14 @@ __FUID3
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000        0x20f
+                  0x000000        0x1e6
  *(.debug_pubnames)
  .debug_pubnames
                   0x000000         0x2a build/default/production/LCD-2.0.o
  .debug_pubnames
                   0x00002a        0x170 build/default/production/GDGL.o
  .debug_pubnames
-                  0x00019a         0x75 build/default/production/LCD-Drivers/ILI9163.o
+                  0x00019a         0x4c build/default/production/LCD-Drivers/SSD1351.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -331,7 +327,7 @@ __FUID3
  .debug_aranges
                   0x000018         0x18 build/default/production/GDGL.o
  .debug_aranges
-                  0x000030         0x18 build/default/production/LCD-Drivers/ILI9163.o
+                  0x000030         0x18 build/default/production/LCD-Drivers/SSD1351.o
 
 .ivt              0x000004        0x13e
                   0x000004          0x4 LONG 0x2d2 DEFINED (__OscillatorFail)?ABSOLUTE (__OscillatorFail):ABSOLUTE (__DefaultInterrupt)
@@ -1351,28 +1347,28 @@ LOAD default_isr
 LOAD data_init
 
 .debug_pubtypes
-                  0x000048         0xcf
+                  0x000048         0xb2
  .debug_pubtypes
-                  0x000048         0x8e build/default/production/LCD-2.0.o
+                  0x000048         0x54 build/default/production/LCD-2.0.o
  .debug_pubtypes
-                  0x0000d6         0x12 build/default/production/GDGL.o
+                  0x00009c         0x12 build/default/production/GDGL.o
  .debug_pubtypes
-                  0x0000e8         0x2f build/default/production/LCD-Drivers/ILI9163.o
+                  0x0000ae         0x4c build/default/production/LCD-Drivers/SSD1351.o
 
 __c30_signature
-                  0x000117         0x24
+                  0x0000fa         0x24
  __c30_signature
-                  0x000117          0x6 build/default/production/LCD-2.0.o
+                  0x0000fa          0x6 build/default/production/LCD-2.0.o
  __c30_signature
-                  0x00011d          0x6 build/default/production/GDGL.o
+                  0x000100          0x6 build/default/production/GDGL.o
  __c30_signature
-                  0x000123          0x6 build/default/production/LCD-Drivers/ILI9163.o
+                  0x000106          0x6 build/default/production/LCD-Drivers/SSD1351.o
  __c30_signature
-                  0x000129          0x6 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a(crt0_extendedep.o)
+                  0x00010c          0x6 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a(crt0_extendedep.o)
  __c30_signature
-                  0x00012f          0x6 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a(data_init_extendedep.o)
+                  0x000112          0x6 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a(data_init_extendedep.o)
  __c30_signature
-                  0x000135          0x6 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a(delay32ep.eo)
+                  0x000118          0x6 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a(delay32ep.eo)
 
 .ndata              0x1000          0x4
  .ndata             0x1000          0x4 build/default/production/GDGL.o
@@ -1403,7 +1399,7 @@ __c30_signature
  .const             0xc2d6        0x1dc build/default/production/GDGL.o
                     0xc2d6                  _Dfont
 
-.text             0x0044b2        0xbca
+.text             0x0044b2        0xbf4
  .text            0x0044b2        0x922 build/default/production/GDGL.o
                   0x0044b2                  _PlotLine
                   0x004552                  _PlotVLine
@@ -1423,19 +1419,17 @@ __c30_signature
                   0x004d46                  _SetTextWrap
                   0x004d66                  _PlotBitmap
                   0x004dbe                  _GDGL_abs
- .text            0x004dd4        0x222 build/default/production/LCD-Drivers/ILI9163.o
+ .text            0x004dd4        0x22e build/default/production/LCD-Drivers/SSD1351.o
                   0x004dd4                  _LCD_Write
-                  0x004e92                  _PlotPoint
-                  0x004efc                  _LCD_SetAddr
-                  0x004f5a                  _LCD_Setup
-                  0x004fa8                  _LCD_ClearDisplay
-                  0x004fda                  _LCD_SetRotation
- .text            0x004ff6         0x86 build/default/production/LCD-2.0.o
-                  0x004ff6                  _main
+                  0x004e24                  _LCD_Setup
+                  0x004f52                  _PlotPoint
+                  0x004fbc                  _LCD_SetAddr
+ .text            0x005002         0xa4 build/default/production/LCD-2.0.o
+                  0x005002                  _main
 
-.init.delay32     0x00507c         0x1c
- .init.delay32    0x00507c         0x1c c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a(delay32ep.eo)
-                  0x00507c                  ___delay32
+.init.delay32     0x0050a6         0x1c
+ .init.delay32    0x0050a6         0x1c c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a(delay32ep.eo)
+                  0x0050a6                  ___delay32
 
-.dinit            0x005098          0xc
- .dinit           0x005098          0xc data_init
+.dinit            0x0050c2          0xc
+ .dinit           0x0050c2          0xc data_init

@@ -11,7 +11,7 @@
 
 #define FCY 31323000 // must define FCY before including libpic30.h
 #include <libpic30.h>
-#include "LCD-Drivers\ILI9163.h"
+#include "LCD-Drivers\SSD1351.h"
 #include "GDGL.h"
 #include "Images\Bird_128x128_C.h"
 
@@ -68,33 +68,36 @@ int main()
      * I/O connections:                            *
      ***********************************************
      *                   PORTB                     *
-     * RB<15:8> -> D<7:0>      | RB7 <- GPIO3      *
-     * RB6 <- GPIO1            | RB5 <- GPIO0      *
+     * RB<15:8> -> D<7:0>      | RB7 -> E          *
+     * RB6 -> RW               | RB5 -> GPIO0/disEn*
      * RB4 -> RESET            | RB3 - PGD         *
      * RB2 - PGC               | RB1 <- SW2        *
      * RB0 <- SW1                                  *
      ***********************************************
      *                   PORTA                     *
-     * RA4 -> GPIO2            | RA3 -> WR         *
-     * RA2 -> RD               | RA1 -> RS         *
-     * RA0 -> CS               |                   *
+     * RA4 <- GPIO1            | RA3 -> DC         *
+     * RA2 -> CS               | RA1 <- GPIO2      *
+     * RA0 <- GPIO3            |                   *
      ***********************************************/
     ANSELB=0b0000000000000000; // turn off all analog features on PORTB<15:8>, RB7, RB1, and RB0
-    TRISB =0b0000000011101111; // make PORTB<15:8> and RB4 outputs - RB1 and RB0 inputs and GPIO inputs
+    TRISB =0b0000000000001111; // 
     LATB  =0b0000000000000000; // set all PORTB outputs low 
     
     ANSELA=0b0000000000000000; // turn off the analog features on all PORTA pins
-    TRISA =0b0000000000000000; // make all PORTA pins outputs 
+    TRISA =0b0000000000010011; //  
     LATA  =0b0000000000000000; // set all PORTA outputs low
     
-    RD=1;
-    CS=0;    // select the chip
-    RESET=1; // active low reset
+    //RD=1;
+    //CS=0;    // select the chip
+    //RESET=1; // active low reset
     
-    __delay_ms(100);
+    //__delay_ms(100);
     
     LCD_Setup();
-    LCD_ClearDisplay();
+    for(x=0;x<128;x++)
+        for(y=0;y<128;y++){
+            PlotPoint(x,y,BLACK);
+        }
     
     PlotBitmap(0,0,128,64,bird_color);
     
